@@ -106,7 +106,19 @@ def run_again():
             break
         else:
             print("you have made an incorrect selection. Please try again")
-            
+
+def recalculate_cpu(sheet):
+    """
+    Reworks out the average CPU 
+    """
+    print("Recalculating cost per unit...") 
+    worksheet = SHEET.worksheet(sheet).col_values(4)
+    total = 0
+    for ind in range(1,len(worksheet)):
+        total = total + float(worksheet[ind])
+    cpu = total / (len(worksheet)-1)
+    return cpu
+
 
 def main():
     """
@@ -120,7 +132,8 @@ def main():
    
     
 
-main()
+# main()
+
 
 
 
