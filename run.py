@@ -17,16 +17,22 @@ sales = SHEET.worksheet('sales')
 data = sales.get_all_values()
 
 def stock_or_sales():
-    choice = input("would you like to input stock or sales?\n").lower()
-    if choice == "sales":
-        confirm_choice(choice)
-        
-    elif choice == "stock":
-        confirm_choice(choice)
-        stock()
-    else:
-        print("you have made an incorrect selection. Please try again")
-        stock_or_sales()
+    """
+    Allows the user to choose if they want to update stock or sales
+    """
+    while True:
+        choice = input("would you like to input stock or sales?\n").lower()
+        if choice == "sales":
+            print("This feature has not been enabled yet")
+            
+        elif choice == "stock":
+            if confirm_choice(f"You chose {choice}."):
+                stock("Deadbeat")
+                break
+
+        else:
+            print("you have made an incorrect selection. Please try again")
+            
 
 def confirm_choice(choice):
     """
@@ -35,9 +41,9 @@ def confirm_choice(choice):
     """
     confirm = input(f"{choice} is that correct? y/n\n")
     if confirm == "y":
-        return "y"
+        return True
     elif confirm == "n":
-        return "n"
+        return False
     else:
         print("you have made an incorrect selection. Please try again")
         confirm_choice(choice)
@@ -53,11 +59,12 @@ def stock(data):
         stock.append(input("How much did the restock cost?\n"))
         stock.append(input("What is the date of the order?\n"))
         stock.append(round(int(stock[1])/int(stock[0]),2))
-        confrim = confirm_choice(f"On {stock[2]}, you ordered {stock[0]} copies of {data} for £{stock[1]} which works out at cpu £{stock[3]}")
-        if confrim =="y":
+       
+        if confirm_choice(f"On {stock[2]}, you ordered {stock[0]} copies of {data} for £{stock[1]} which works out at cpu £{stock[3]}"):
             print("updating stock")
             break
-        return stock
+        
+    return stock
             
 
 
@@ -78,7 +85,7 @@ def main():
 
    
     
-restock = stock("Deadbeat")
-# main()
+
+main()
 
 
