@@ -27,7 +27,7 @@ def stock_or_sales():
             
         elif choice == "stock":
             if confirm_choice(f"You chose {choice}."):
-                stock("Deadbeat")
+                select_book()
                 break
 
         else:
@@ -49,6 +49,9 @@ def confirm_choice(choice):
         confirm_choice(choice)
 
 def select_book():
+    """
+    allows the user to select which book they are updating the stock of.
+    """
     while True:
         books = SHEET.worksheet('stock').get_all_values()[0]
         i = 1
@@ -62,8 +65,6 @@ def select_book():
             break
         print(f"Incorrect data. Please enter a number between 1 and {len(books)}\n")    
     
-
-
 def stock(book):
     """
     function that allows the user to update stock levels of all comic books.
@@ -91,8 +92,6 @@ def update_sheet(data, sheet):
     worksheet = SHEET.worksheet(sheet)
     worksheet.append_row(data)
     print(f"{sheet} worksheet updated successfully.\n")
-
- 
 
 def run_again():
     """
