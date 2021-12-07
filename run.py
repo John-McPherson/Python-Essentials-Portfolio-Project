@@ -48,6 +48,22 @@ def confirm_choice(choice):
         print("you have made an incorrect selection. Please try again")
         confirm_choice(choice)
 
+def select_book():
+    while True:
+        books = SHEET.worksheet('stock').get_all_values()[0]
+        i = 1
+        print("which book would you like to update?")
+        for x in books:
+            print(f"{i}. {x}")
+            i=i+1
+        book = int(input("Please enter a number between 1 and {len(books)}\n"))-1
+        if book <= len(books):
+            stock(books[book])
+            break
+        print(f"Incorrect data. Please enter a number between 1 and {len(books)}\n")    
+    
+
+
 def stock(book):
     """
     function that allows the user to update stock levels of all comic books.
@@ -76,6 +92,8 @@ def update_sheet(data, sheet):
     worksheet.append_row(data)
     print(f"{sheet} worksheet updated successfully.\n")
 
+ 
+
 def run_again():
     """
     Gives the user the option to rerun the program after it finishes
@@ -90,8 +108,6 @@ def run_again():
         else:
             print("you have made an incorrect selection. Please try again")
             
-
-    
 
 def main():
     """
