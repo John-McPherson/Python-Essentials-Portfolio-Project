@@ -48,24 +48,33 @@ def confirm_choice(choice):
         print("you have made an incorrect selection. Please try again")
         confirm_choice(choice)
 
-def stock(data):
+def stock(book):
     """
     function that allows the user to update stock levels of all comic books.
     """    
     while True:
-        print(f"updating stock for {data}...")
+        print(f"updating stock for {book}...")
         stock = []
         stock.append(input("How much stock have you ordered?\n"))
         stock.append(input("How much did the restock cost?\n"))
         stock.append(input("What is the date of the order?\n"))
         stock.append(round(int(stock[1])/int(stock[0]),2))
        
-        if confirm_choice(f"On {stock[2]}, you ordered {stock[0]} copies of {data} for £{stock[1]} which works out at cpu £{stock[3]}"):
+        if confirm_choice(f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]} which works out at cpu £{stock[3]}"):
             print("updating stock")
             break
         
-    return stock
+    update_sheet(stock, book)
             
+def update_sheet(data, sheet):
+    """
+    Updates worksheets and adds new row with data provided.
+    Adapted from the love_sandwiches code along project. 
+    """
+    print(f"Updating {sheet} worksheet...")
+    worksheet = SHEET.worksheet(sheet)
+    worksheet.append_row(data)
+    print(f"{sheet} worksheet updated successfully.\n")
 
 
     # worksheet = SHEET.worksheet('deadbeat')
@@ -80,12 +89,13 @@ def main():
     Runs all program functions
     """
     print("Welcome to the comic stock tracker.")
-    
     stock_or_sales()
 
    
     
 
-main()
+# main()
+
+stock("deadbeat")
 
 
