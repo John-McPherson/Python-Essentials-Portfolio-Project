@@ -16,4 +16,15 @@ sales = SHEET.worksheet('sales')
 
 data = sales.get_all_values()
 
-print(data)
+
+
+
+def main():
+    """
+    Runs all program functions
+    """
+    print("Welcome to the comic stock tracker.")
+
+main()
+
+
