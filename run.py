@@ -119,6 +119,19 @@ def recalculate_cpu(sheet):
     cpu = total / (len(worksheet)-1)
     return cpu
 
+def sales(source):
+    """
+    updates the spreadsheet with sale info
+    """
+    sales = SHEET.worksheet("sales").get_all_values()
+    books = sales[0]
+    data = [source]
+    data.append(input(f"Please enter the date of sale\n"))
+    for ind in range(2,len(sales[0])):
+        data.append(input(f"Enter sale numbers for {books[ind]}\n"))
+    update_sheet(data, "sales")
+
+
 
 def main():
     """
@@ -130,7 +143,7 @@ def main():
 
 
    
-    
+sales("online")
 
 # main()
 
