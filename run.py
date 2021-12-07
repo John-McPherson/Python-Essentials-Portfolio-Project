@@ -23,7 +23,7 @@ def stock_or_sales():
         
     elif choice == "stock":
         confirm_choice(choice)
-        
+        stock()
     else:
         print("you have made an incorrect selection. Please try again")
         stock_or_sales()
@@ -33,16 +33,38 @@ def confirm_choice(choice):
     prompts the user to confirm their choice. 
 
     """
-    confirm = input(f"you have chosen {choice} is that correct? y/n\n")
+    confirm = input(f"{choice} is that correct? y/n\n")
     if confirm == "y":
-        print(f"Loading {choice} function")
+        return "y"
     elif confirm == "n":
-        stock_or_sales()
+        return "n"
     else:
         print("you have made an incorrect selection. Please try again")
         confirm_choice(choice)
 
-    
+def stock(data):
+    """
+    function that allows the user to update stock levels of all comic books.
+    """    
+    while True:
+        print(f"updating stock for {data}...")
+        stock = []
+        stock.append(input("How much stock have you ordered?\n"))
+        stock.append(input("How much did the restock cost?\n"))
+        stock.append(input("What is the date of the order?\n"))
+        stock.append(round(int(stock[1])/int(stock[0]),2))
+        confrim = confirm_choice(f"On {stock[2]}, you ordered {stock[0]} copies of {data} for £{stock[1]} which works out at cpu £{stock[3]}")
+        if confrim =="y":
+            print("updating stock")
+            break
+        return stock
+            
+
+
+    # worksheet = SHEET.worksheet('deadbeat')
+
+    # print(deadbeat)
+
 
     
 
@@ -56,7 +78,7 @@ def main():
 
    
     
-
-main()
+restock = stock("Deadbeat")
+# main()
 
 
