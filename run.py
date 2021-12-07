@@ -23,8 +23,9 @@ def stock_or_sales():
     while True:
         choice = input("would you like to input stock or sales?\n").lower()
         if choice == "sales":
-            print("This feature has not been enabled yet")
-            
+            if confirm_choice(f"You chose {choice}."):
+                select_con_or_online()
+                break       
         elif choice == "stock":
             if confirm_choice(f"You chose {choice}."):
                 select_book()
@@ -119,6 +120,26 @@ def recalculate_cpu(sheet):
     cpu = total / (len(worksheet)-1)
     return cpu
 
+def select_con_or_online():
+    """
+    allows the user to enter the source of the sale. Either online or convention sales. 
+    If convention sales are chosen then it prompts for the name of the convention. 
+    """
+    while True: 
+        source = input(f"Are you updating online or convention sales?\n")
+        if source == "online":
+            if confirm_choice(f"You are updating {source} sales."):
+                sales(source)
+                break
+        elif source == "convention":
+            if confirm_choice(f"You are updating {source} sales."):
+                convention = input(f"Which convention are you updating?\n")
+                sales(convention)
+                break
+        else:
+            print("you have made an incorrect selection. Please try again")
+
+
 def sales(source):
     """
     updates the spreadsheet with sale info
@@ -143,7 +164,7 @@ def main():
 
 
    
-sales("online")
+select_con_or_online() 
 
 # main()
 
