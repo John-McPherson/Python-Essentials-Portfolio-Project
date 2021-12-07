@@ -16,7 +16,15 @@ sales = SHEET.worksheet('sales')
 
 data = sales.get_all_values()
 
-
+def stock_or_sales():
+    choice = input("would you like to input stock or sales?\n").lower()
+    if choice == "sales":
+        print(f"you have chosen sales")
+    elif choice == "stock":
+        print(f"you have chosen stock")
+    else:
+        print("you have made an incorrect selection. Please try again")
+        stock_or_sales()
 
 
 def main():
@@ -24,6 +32,11 @@ def main():
     Runs all program functions
     """
     print("Welcome to the comic stock tracker.")
+    
+    stock_or_sales()
+
+   
+    
 
 main()
 
