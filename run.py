@@ -19,13 +19,32 @@ data = sales.get_all_values()
 def stock_or_sales():
     choice = input("would you like to input stock or sales?\n").lower()
     if choice == "sales":
-        print(f"you have chosen sales")
+        confirm_choice(choice)
+        
     elif choice == "stock":
-        print(f"you have chosen stock")
+        confirm_choice(choice)
+        
     else:
         print("you have made an incorrect selection. Please try again")
         stock_or_sales()
 
+def confirm_choice(choice):
+    """
+    prompts the user to confirm their choice. 
+
+    """
+    confirm = input(f"you have chosen {choice} is that correct? y/n\n")
+    if confirm == "y":
+        print(f"Loading {choice} function")
+    elif confirm == "n":
+        stock_or_sales()
+    else:
+        print("you have made an incorrect selection. Please try again")
+        confirm_choice(choice)
+
+    
+
+    
 
 def main():
     """
