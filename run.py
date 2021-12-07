@@ -151,6 +151,20 @@ def sales(source):
     for ind in range(2,len(sales[0])):
         data.append(input(f"Enter sale numbers for {books[ind]}\n"))
     update_sheet(data, "sales")
+    if source != "online":
+        print("test")
+
+def update_con_costs(source, date):
+    data = [source, date]
+    data.append(input(f"Please enter the table costs for {source} convention\n"))
+    data.append(input(f"Please enter the travel costs for {source} convention\n"))
+    data.append(input(f"Please enter the parking costs for {source} convention\n"))
+    data.append(input(f"Please enter any misc costs for {source} convention\n"))
+    total_costs = 0
+    for ind in range(2,len(data)):
+        total_costs = total_costs + int(data[ind])
+    print(total_costs)
+    data.append(total_costs)
 
 
 
@@ -163,8 +177,8 @@ def main():
     run_again()
 
 
-   
-select_con_or_online() 
+update_con_costs("tbubz","15/12/21")   
+# select_con_or_online() 
 
 # main()
 
