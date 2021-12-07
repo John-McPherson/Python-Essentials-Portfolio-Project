@@ -76,11 +76,20 @@ def update_sheet(data, sheet):
     worksheet.append_row(data)
     print(f"{sheet} worksheet updated successfully.\n")
 
-
-    # worksheet = SHEET.worksheet('deadbeat')
-
-    # print(deadbeat)
-
+def run_again():
+    """
+    Gives the user the option to rerun the program after it finishes
+    """
+    while True:
+        choice = input("Do you want to update another input? y/n \n")
+        if choice == "y":
+            stock_or_sales()
+        elif choice == "n":
+            print("Thank you for using the comic stock tracker.")
+            break
+        else:
+            print("you have made an incorrect selection. Please try again")
+            
 
     
 
@@ -90,12 +99,14 @@ def main():
     """
     print("Welcome to the comic stock tracker.")
     stock_or_sales()
+    run_again()
+
 
    
     
 
-# main()
+main()
 
-stock("deadbeat")
+
 
 
