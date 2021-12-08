@@ -156,6 +156,9 @@ def sales(source):
         update_con_costs(source, date)
 
 def update_con_costs(source, date):
+    """
+    updates the cons sheet with all costs incurred and uses these to work out the total profit
+    """
     while True: 
         data = [source, date]
         data.append(input(f"Please enter the table costs for {source} convention\n"))
