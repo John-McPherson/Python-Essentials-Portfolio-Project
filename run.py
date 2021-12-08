@@ -187,22 +187,45 @@ def add_book():
     comics.append(book)
     print(comics)
 
+def populate_comic_list():
+    """
+    creates a dictionary with sales data for each book.
+    """
+    print("loading application data...")
+    keys = ["title","sale price","cpu","profit per sale"]
+    book = {}
+    sales = SHEET.worksheet('sales').get_all_values()
+    titles = data[0]
+    for ind in range(2,len(titles)):
+        stock = SHEET.worksheet(titles[ind])
+        book[keys[0]] = titles[ind]
+        book[keys[1]] = float(stock.col_values(5)[-1])
+        book[keys[2]] = float(stock.col_values(4)[-1])
+        book[keys[3]] = book[keys[1]]- book[keys[2]]
+        comics.append(book.copy())
+    print("Application data loaded.")
+       
+    
+    
 
-add_book()
-add_book()
+        
+
+
+
+    # comics.append(book)
+
 
 
 def main():
     """
     Runs all program functions
     """
+    populate_comic_list()
     print("Welcome to the comic stock tracker.")
     stock_or_sales()
     run_again()
 
 # main()
-
-
 
 
 
