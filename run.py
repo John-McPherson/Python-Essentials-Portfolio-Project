@@ -180,12 +180,25 @@ def add_book():
     """
     keys = ["title","sale price","cpu","profit per sale"]
     book = {}
-    book[keys[0]] = input(f"What is the title of the book?")
-    book[keys[1]] = input(f"What is the sale price of the book?")
+    title = input(f"What is the title of the book?\n")
+    price = input(f"What is the sale price of the book?\n")
+    book[keys[0]] = title
+    book[keys[1]] = price
     book[keys[2]] = 0
     book[keys[3]] = float(book[keys[1]])- book[keys[2]]
     comics.append(book)
-    print(comics)
+    new_spreadsheet(title)
+
+    
+
+def new_spreadsheet(title):
+    """
+    creates a new worksheet to track stock levels. 
+    """
+    worksheet = SHEET.add_worksheet(title= title, rows="100", cols="20")
+    header =["restock","cost","date","cost per unit", "price"]
+    update_sheet(["restock","cost","date","cost per unit", "price"], title)
+
 
 def populate_comic_list():
     """
@@ -204,15 +217,6 @@ def populate_comic_list():
         book[keys[3]] = book[keys[1]]- book[keys[2]]
         comics.append(book.copy())
     print("Application data loaded.")
-       
-    
-    
-
-        
-
-
-
-    # comics.append(book)
 
 
 
@@ -228,4 +232,4 @@ def main():
 # main()
 
 
-
+new_spreadsheet("test")
