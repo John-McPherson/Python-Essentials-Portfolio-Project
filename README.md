@@ -17,6 +17,14 @@ This project is the third milestone project for the Code Institute Diploma in Fu
     * [Update Spreadsheets](#update-spreadsheets)
     * [Confirm Data](#confirm-data)
     * [Rerun Application](#rerun-application)
+* [Features left to implement](features-left-to-implement)
+    * [Update Cost Per Unit](#Update-cost-per-unit)]
+    * [Add New Book](#add-new-book)
+    * [Con Profits](#con-profits)
+    * [Low Stock Warning](#low-stock-warning)
+    * [Automatic Reordering](#automatic-reordering)
+    * [Data Validation](#data-validation)
+
 
 ## **UX** 
 
@@ -76,8 +84,27 @@ Before starting on the project, I created a mock up using lucid chart to break d
  ### ** Rerun Application **
  * Once the application has finished running it gives the user the option to rerun to add any additional sales/ stock that’s required.   
 
+## **Features left to implement**
 
+### **Update Cost Per Unit **
+ * When an order is restocked it should automatically recalculate the cost per unit based on total cost of all items. This should also recalculate all previous sales to reflect the new CPU.
 
+ ### **Add New Book**
+ * The application will give the user the option to add a new product when ordering new stock. This will automatically update all other functions to prompt for data for this product when carrying out functions. 
+
+### **Con Profits**
+ * The application uses this information (and the CPU generated from the stock function) to work out both the net and gross profit from the convention sales.  
+
+### **Low Stock Warning**
+ * The application will prompt the user when stocks of an item are running low.
+
+### ** Automatic Reordering ** 
+* The application should offer the user the option to automatically send an email to the printer to order a restock of a book. This email should include:
+	* The restock amount. 
+	* The date of the last reprint. 
+
+### **Data Validation **
+ * The application validates all information to ensure that the correct data is being passed to it. If incorrect data is passed to it will tell the user what the issue is and how they can resolve it. 
 
 
 
