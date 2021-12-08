@@ -60,7 +60,7 @@ def select_book():
         for x in books:
             print(f"{i}. {x}")
             i=i+1
-        book = int(input("Please enter a number between 1 and {len(books)}\n"))-1
+        book = int(input(f"Please enter a number between 1 and {len(books)}\n"))-1
         if book <= len(books):
             stock(books[book])
             break
@@ -180,11 +180,7 @@ def main():
     stock_or_sales()
     run_again()
 
-
-update_con_costs("tbubz","15/12/21")   
-# select_con_or_online() 
-
-# main()
+main()
 
 
 
