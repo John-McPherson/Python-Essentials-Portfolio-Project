@@ -55,6 +55,7 @@ def select_book():
     """
     while True:
         books = SHEET.worksheet('stock').get_all_values()[0]
+        books.append("Add new book")
         i = 1
         print("which book would you like to update?")
         for x in books:
@@ -62,8 +63,14 @@ def select_book():
             i=i+1
         book = int(input(f"Please enter a number between 1 and {len(books)}\n"))-1
         if book <= len(books):
-            stock(books[book])
-            break
+            if book != len(books)-1:
+                print(len(books))
+                print (book)
+                stock(books[book])
+                break
+            else:
+                add_book()
+                break
         print(f"Incorrect data. Please enter a number between 1 and {len(books)}\n")    
     
 def stock(book):
@@ -187,6 +194,7 @@ def add_book():
     book[keys[3]] = float(book[keys[1]])- book[keys[2]]
     comics.append(book)
     new_spreadsheet(title)
+    update_headers(title)
 
     
 
@@ -205,8 +213,6 @@ def update_headers(title):
     sales_row = chr(num+67)+"1"
     stock.update(stock_row,title)
     sales.update(sales_row,title)
-
-    print(sales_row)
     
 
 def populate_comic_list():
@@ -240,5 +246,4 @@ def main():
 
 # main()
 
-
-update_headers("test")
+select_book()
