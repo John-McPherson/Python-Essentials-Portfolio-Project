@@ -175,8 +175,7 @@ def update_con_costs(source, date):
 comics = []
 def add_book():
     """
-    adds comic book to the 
-
+    adds comic book to the comics list to allow data to be easily accessed. 
     """
     keys = ["title","sale price","cpu","profit per sale"]
     book = {}
@@ -196,9 +195,19 @@ def new_spreadsheet(title):
     creates a new worksheet to track stock levels. 
     """
     worksheet = SHEET.add_worksheet(title= title, rows="100", cols="20")
-    header =["restock","cost","date","cost per unit", "price"]
     update_sheet(["restock","cost","date","cost per unit", "price"], title)
 
+def update_headers(title):
+    stock = SHEET.worksheet("stock")
+    sales = SHEET.worksheet("sales")
+    num = len(stock.get_all_values()[0])
+    stock_row = chr(num+65)+"1"
+    sales_row = chr(num+67)+"1"
+    stock.update(stock_row,title)
+    sales.update(sales_row,title)
+
+    print(sales_row)
+    
 
 def populate_comic_list():
     """
@@ -232,4 +241,4 @@ def main():
 # main()
 
 
-new_spreadsheet("test")
+update_headers("test")
