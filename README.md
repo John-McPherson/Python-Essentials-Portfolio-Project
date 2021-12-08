@@ -18,7 +18,7 @@ This project is the third milestone project for the Code Institute Diploma in Fu
     * [Confirm Data](#confirm-data)
     * [Rerun Application](#rerun-application)
 * [Features left to implement](features-left-to-implement)
-    * [Update Cost Per Unit](#Update-cost-per-unit)]
+    * [Update Cost Per Unit](#Update-cost-per-unit)
     * [Add New Book](#add-new-book)
     * [Con Profits](#con-profits)
     * [Low Stock Warning](#low-stock-warning)
@@ -71,7 +71,7 @@ Before starting on the project, I created a mock up using lucid chart to break d
 	* The sales of each book. 
 	* The expenses incurred during the convention (broken down into table costs, travel costs, parking, and miscellaneous costs.
 
-### ** Online Sales **
+### **Online Sales**
 * When updating online sales the program prompts the user following information: 
 	* The date of the sales. 
 	* The sales of each book. 
@@ -79,15 +79,15 @@ Before starting on the project, I created a mock up using lucid chart to break d
 ### **Update Spreadsheets**
  * The application pushes all information to a linked google sheets doc for easy viewing. 
 
- ### ** Confirm Data **
+ ### **Confirm Data**
 * After each input the application repeats the information back to the user and ask them to confirm before it pushes the data to the spreadsheet. 
 
- ### ** Rerun Application **
+ ### **Rerun Application**
  * Once the application has finished running it gives the user the option to rerun to add any additional sales/ stock that’s required.   
 
 ## **Features left to implement**
 
-### **Update Cost Per Unit **
+### **Update Cost Per Unit**
  * When an order is restocked it should automatically recalculate the cost per unit based on total cost of all items. This should also recalculate all previous sales to reflect the new CPU.
 
  ### **Add New Book**
@@ -99,12 +99,12 @@ Before starting on the project, I created a mock up using lucid chart to break d
 ### **Low Stock Warning**
  * The application will prompt the user when stocks of an item are running low.
 
-### ** Automatic Reordering ** 
+### **Automatic Reordering** 
 * The application should offer the user the option to automatically send an email to the printer to order a restock of a book. This email should include:
 	* The restock amount. 
 	* The date of the last reprint. 
 
-### **Data Validation **
+### **Data Validation**
  * The application validates all information to ensure that the correct data is being passed to it. If incorrect data is passed to it will tell the user what the issue is and how they can resolve it. 
 
 ## **Technologies Used**
