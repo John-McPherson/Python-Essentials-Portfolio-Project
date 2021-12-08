@@ -172,8 +172,24 @@ def update_con_costs(source, date):
         if confirm_choice(f"You are updating the sales for {source} convention. \n Table costs are £{data[3]} \n Travel costs are £{data[4]} \n Misc costs are £{data[5]}\n"):
             update_sheet(data, "cons")
             break
+comics = []
+def add_book():
+    """
+    adds comic book to the 
+
+    """
+    keys = ["title","sale price","cpu","profit per sale"]
+    book = {}
+    book[keys[0]] = input(f"What is the title of the book?")
+    book[keys[1]] = input(f"What is the sale price of the book?")
+    book[keys[2]] = 0
+    book[keys[3]] = float(book[keys[1]])- book[keys[2]]
+    comics.append(book)
+    print(comics)
 
 
+add_book()
+add_book()
 
 
 def main():
@@ -184,7 +200,7 @@ def main():
     stock_or_sales()
     run_again()
 
-main()
+# main()
 
 
 
