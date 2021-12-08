@@ -214,6 +214,18 @@ def update_headers(title):
     stock.update(stock_row,title)
     sales.update(sales_row,title)
     
+def update_price(title, price):
+    """
+    updates the price of a new book onto the price worksheet
+    """
+    pricework = SHEET.worksheet("price")
+    y = len(pricework.get_all_values())+1
+    title_cell = "A"+str(y)
+    price_cell = "B"+str(y)
+    pricework.update(title_cell, title)
+    pricework.update(price_cell, price)
+
+        
 
 def populate_comic_list():
     """
@@ -246,4 +258,4 @@ def main():
 
 # main()
 
-select_book()
+
