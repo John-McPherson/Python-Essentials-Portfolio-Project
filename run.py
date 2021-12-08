@@ -155,16 +155,20 @@ def sales(source):
         print("test")
 
 def update_con_costs(source, date):
-    data = [source, date]
-    data.append(input(f"Please enter the table costs for {source} convention\n"))
-    data.append(input(f"Please enter the travel costs for {source} convention\n"))
-    data.append(input(f"Please enter the parking costs for {source} convention\n"))
-    data.append(input(f"Please enter any misc costs for {source} convention\n"))
-    total_costs = 0
-    for ind in range(2,len(data)):
-        total_costs = total_costs + int(data[ind])
-    print(total_costs)
-    data.append(total_costs)
+    while True: 
+        data = [source, date]
+        data.append(input(f"Please enter the table costs for {source} convention\n"))
+        data.append(input(f"Please enter the travel costs for {source} convention\n"))
+        data.append(input(f"Please enter the parking costs for {source} convention\n"))
+        data.append(input(f"Please enter any misc costs for {source} convention\n"))
+        total_costs = 0
+        for ind in range(2,len(data)):
+            total_costs = total_costs + int(data[ind])
+        data.append(total_costs)
+        if confirm_choice(f"You are updating the sales for {source} convention. \n Table costs are £{data[3]} \n Travel costs are £{data[4]} \n Misc costs are £{data[5]}\n"):
+            update_sheet(data, "cons")
+            break
+
 
 
 
