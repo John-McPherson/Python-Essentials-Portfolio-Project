@@ -24,6 +24,7 @@ This project is the third milestone project for the Code Institute Diploma in Fu
     * [Low Stock Warning](#low-stock-warning)
     * [Automatic Reordering](#automatic-reordering)
     * [Data Validation](#data-validation)
+* [Technologies Used](technologies-used)
 
 
 ## **UX** 
@@ -105,6 +106,13 @@ Before starting on the project, I created a mock up using lucid chart to break d
 
 ### **Data Validation **
  * The application validates all information to ensure that the correct data is being passed to it. If incorrect data is passed to it will tell the user what the issue is and how they can resolve it. 
+
+## **Technologies Used**
+
+* Python
+* Git
+* Google Docs
+* Google Sheets
 
 
 
