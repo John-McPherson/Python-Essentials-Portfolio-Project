@@ -127,7 +127,7 @@ def select_con_or_online():
     """
     while True: 
         source = input(f"Are you updating online or convention sales?\n")
-        if source == "online":
+        if source == "onlinye":
             if confirm_choice(f"You are updating {source} sales."):
                 sales(source)
                 break
@@ -147,12 +147,13 @@ def sales(source):
     sales = SHEET.worksheet("sales").get_all_values()
     books = sales[0]
     data = [source]
-    data.append(input(f"Please enter the date of sale\n"))
+    date = input(f"Please enter the date of sale\n")
+    data.append(date)
     for ind in range(2,len(sales[0])):
         data.append(input(f"Enter sale numbers for {books[ind]}\n"))
     update_sheet(data, "sales")
     if source != "online":
-        print("test")
+        update_con_costs(source, date)
 
 def update_con_costs(source, date):
     while True: 
