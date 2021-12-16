@@ -204,7 +204,7 @@ def new_spreadsheet(title):
     creates a new worksheet to track stock levels. 
     """
     worksheet = SHEET.add_worksheet(title= title, rows="100", cols="20")
-    update_sheet(["restock","cost","date","cost per unit", "price"], title)
+    update_sheet(["restock","cost","date","cost per unit"], title)
 
 def update_headers(title):
     stock = SHEET.worksheet("stock")
