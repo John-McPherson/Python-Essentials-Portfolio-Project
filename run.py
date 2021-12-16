@@ -208,6 +208,26 @@ def validate_input(data):
         return False
     return True
 
+def validate_date(data):
+    """
+    Checks the user input and confirms that the input is the a valid date. 
+    """
+    date = str(data).split("/")
+    try:
+        if len(date) !=3: 
+            raise ValueError(
+                f"The date inputed is incorrect. Please provide date in the following format dd/mm/yyyy"
+            )
+        import datetime
+        print(datetime.datetime(int(date[2]),int(date[0]),int(date[1])))
+
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again\n")
+        return False
+    return True
+
+
+
 def new_spreadsheet(title):
     """
     creates a new worksheet to track stock levels. 
@@ -267,6 +287,7 @@ def main():
     run_again()
 
 # main()
-validate_input(1)
-validate_input("test")
+validate_date("10/1/2021")
+validate_date(1)
+validate_date("test")
 
