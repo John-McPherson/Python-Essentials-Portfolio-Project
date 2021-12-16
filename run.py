@@ -80,8 +80,16 @@ def stock(book):
     while True:
         print(f"updating stock for {book}...")
         stock = []
-        stock.append(input("How much stock have you ordered?\n"))
-        stock.append(input("How much did the restock cost?\n"))
+        while True:
+            restock = input("How much stock have you ordered?\n")
+            if validate_input(restock):
+                stock.append(restock)
+                break
+        while True:
+            cost = input("How much did the restock cost?\n")
+            if validate_input(cost):
+                stock.append(cost)
+                break
         while True: 
             date = input("What is the date of the order?\n")
             if validate_date(date):
