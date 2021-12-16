@@ -166,10 +166,17 @@ def sales(source):
     sales = SHEET.worksheet("sales").get_all_values()
     books = sales[0]
     data = [source]
-    date = input(f"Please enter the date of sale\n")
-    data.append(date)
+    while True:
+        date = input(f"Please enter the date of sale\n")
+        if validate_date(date):
+            data.append(date)
+            break
     for ind in range(2,len(sales[0])):
-        data.append(input(f"Enter sale numbers for {books[ind]}\n"))
+        while True: 
+            x = input(f"Enter sale numbers for {books[ind]}\n")
+            if validate_input(x):
+                data.append(x)
+                break
     update_sheet(data, "sales")
     if source != "online":
         update_con_costs(source, date)
@@ -300,4 +307,4 @@ def main():
 
 # main()
 
-stock("deadbeat")
+sales("online")
