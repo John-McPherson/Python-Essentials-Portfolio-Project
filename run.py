@@ -219,7 +219,7 @@ def validate_date(data):
                 f"The date inputed is incorrect. Please provide date in the following format dd/mm/yyyy"
             )
         import datetime
-        print(datetime.datetime(int(date[2]),int(date[0]),int(date[1])))
+        date = datetime.datetime(int(date[2]),int(date[1]),int(date[0])))
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again\n")
@@ -286,8 +286,5 @@ def main():
     stock_or_sales()
     run_again()
 
-# main()
-validate_date("10/1/2021")
-validate_date(1)
-validate_date("test")
+main()
 
