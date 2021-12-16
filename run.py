@@ -197,7 +197,16 @@ def add_book():
     update_headers(title)
     update_price(title,price)
 
-    
+def validate_input(data):
+    """
+    Checks the user input and confirms that the input is the expected data type. 
+    """
+    try:
+        float(data)
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again\n")
+        return False
+    return True
 
 def new_spreadsheet(title):
     """
@@ -257,6 +266,7 @@ def main():
     stock_or_sales()
     run_again()
 
-main()
-
+# main()
+validate_input(1)
+validate_input("test")
 
