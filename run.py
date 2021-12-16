@@ -82,7 +82,11 @@ def stock(book):
         stock = []
         stock.append(input("How much stock have you ordered?\n"))
         stock.append(input("How much did the restock cost?\n"))
-        stock.append(input("What is the date of the order?\n"))
+        while True: 
+            date = input("What is the date of the order?\n")
+            if validate_date(date):
+                stock.append(date)
+                break
         stock.append(round(int(stock[1])/int(stock[0]),2))
        
         if confirm_choice(f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]} which works out at cpu £{stock[3]}"):
@@ -219,7 +223,7 @@ def validate_date(data):
                 f"The date inputed is incorrect. Please provide date in the following format dd/mm/yyyy"
             )
         import datetime
-        date = datetime.datetime(int(date[2]),int(date[1]),int(date[0])))
+        date = datetime.datetime(int(date[2]),int(date[1]),int(date[0]))
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again\n")
@@ -286,5 +290,6 @@ def main():
     stock_or_sales()
     run_again()
 
-main()
+# main()
 
+stock("deadbeat")
