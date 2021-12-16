@@ -187,10 +187,26 @@ def update_con_costs(source, date):
     """
     while True: 
         data = [source, date]
-        data.append(input(f"Please enter the table costs for {source} convention\n"))
-        data.append(input(f"Please enter the travel costs for {source} convention\n"))
-        data.append(input(f"Please enter the parking costs for {source} convention\n"))
-        data.append(input(f"Please enter any misc costs for {source} convention\n"))
+        while True:
+            table_costs = input(f"Please enter the table costs for {source} convention\n")
+            if validate_input(table_costs):
+                data.append(table_costs)
+                break
+        while True:
+            travel_costs = input(f"Please enter the travel costs for {source} convention\n")
+            if validate_input(travel_costs):
+                data.append(travel_costs)
+                break
+        while True:
+            parking_costs = input(f"Please enter the parking costs for {source} convention\n")
+            if validate_input(parking_costs):
+                data.append(parking_costs)
+                break
+        while True:
+            misc_costs = input(f"Please enter any misc costs for {source} convention\n")
+            if validate_input(misc_costs):
+                data.append(misc_costs)
+                break
         total_costs = 0
         for ind in range(2,len(data)):
             total_costs = total_costs + int(data[ind])
@@ -307,4 +323,4 @@ def main():
 
 # main()
 
-sales("online")
+sales("convention")
