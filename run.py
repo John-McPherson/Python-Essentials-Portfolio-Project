@@ -134,7 +134,7 @@ def select_con_or_online():
     """
     while True: 
         source = input(f"Are you updating online or convention sales?\n")
-        if source == "onlinye":
+        if source == "online":
             if confirm_choice(f"You are updating {source} sales."):
                 sales(source)
                 break
@@ -195,6 +195,7 @@ def add_book():
     comics.append(book)
     new_spreadsheet(title)
     update_headers(title)
+    update_price(title,price)
 
     
 
@@ -256,6 +257,6 @@ def main():
     stock_or_sales()
     run_again()
 
-# main()
+main()
 
 
