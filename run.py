@@ -4,17 +4,18 @@ from google.oauth2.service_account import Credentials
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
+    "https://www.googleapis.com/auth/drive",
+]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('comic_sales')
+SHEET = GSPREAD_CLIENT.open("comic_sales")
 
-sales = SHEET.worksheet('sales')
+sales = SHEET.worksheet("sales")
 
 data = sales.get_all_values()
+
 
 def stock_or_sales():
     """
@@ -25,7 +26,7 @@ def stock_or_sales():
         if choice == "sales":
             if confirm_choice(f"You chose {choice}."):
                 select_con_or_online()
-                break       
+                break
         elif choice == "stock":
             if confirm_choice(f"You chose {choice}."):
                 select_book()
@@ -33,11 +34,11 @@ def stock_or_sales():
 
         else:
             print("you have made an incorrect selection. Please try again")
-            
+
 
 def confirm_choice(choice):
     """
-    prompts the user to confirm their choice. 
+    prompts the user to confirm their choice.
 
     """
     confirm = input(f"{choice} is that correct? y/n\n")
@@ -49,21 +50,25 @@ def confirm_choice(choice):
         print("you have made an incorrect selection. Please try again")
         confirm_choice(choice)
 
+
 def select_book():
     """
     allows the user to select which book they are updating the stock of.
     """
     while True:
-        books = SHEET.worksheet('stock').get_all_values()[0]
+        books = SHEET.worksheet("stock").get_all_values()[0]
         books.append("Add new book")
         i = 1
         print("which book would you like to update?")
         for x in books:
             print(f"{i}. {x}")
             i = i + 1
-        book = int(input(f"Please enter a number between 1 and {len(books)}\n"))-1
+        book = (
+            int(input(f"Please enter a number between 1 and {len(books)}\n"))
+            - 1
+        )
         if book <= len(books):
-            if book != len(books)-1:
+            if book != len(books) - 1:
                 print(len(books))
                 print(book)
                 print(book)
@@ -72,13 +77,16 @@ def select_book():
             else:
                 add_book(book)
                 break
-        print(f"Incorrect data. Please enter a number between 1 and {len(books)}\n")    
-    
+        print(
+            f"Incorrect data. Please enter a number between 1 and {len(books)}\n"
+        )
+
+
 def stock(book, index):
     """
     function that allows the user to update stock levels of all comic books.
     """
-    print("test stock")    
+    print("test stock")
     while True:
         print(f"updating stock for {book}...")
         stock = []
@@ -92,85 +100,92 @@ def stock(book, index):
             if validate_input(cost):
                 stock.append(cost)
                 break
-        while True: 
+        while True:
             date = input("What is the date of the order?\n")
             if validate_date(date):
                 stock.append(date)
                 break
-        stock.append(round(int(stock[1])/int(stock[0]),2))
-       
-        if confirm_choice(f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]} which works out at cpu £{stock[3]}"):
+        stock.append(round(int(stock[1]) / int(stock[0]), 2))
+        if confirm_choice(
+            f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]} which works out at cpu £{stock[3]}"
+        ):
             print("updating stock")
             break
-        
     update_sheet(stock, book)
     print(f"restock: {restock} and index{index}")
-    update_stock_restock(restock,index)
+    update_stock_restock(restock, index)
+
 
 def update_stock_levels(data):
     """
-    Updates total stock level adding books on a restock and removing them whenever sales are computed.
+    Updates total stock level adding books on a restock and removing them whenever sales are
+    computed.
     """
     print("updating total stock levels...")
-    stock = SHEET.worksheet('stock')
+    stock = SHEET.worksheet("stock")
     books = stock.get_all_values()
     new_stock_level = []
     col = 65
     x = 0
 
-
     for ind in books[-1]:
         restock = int(ind) - int(data[x])
         if restock < 50:
-            order_prompt(books[0][x],x)
-            stock = SHEET.worksheet('stock')
-            restock = stock.acell(chr(col)+"2").value
-        x+=1
+            order_prompt(books[0][x], x)
+            stock = SHEET.worksheet("stock")
+            restock = stock.acell(chr(col) + "2").value
+        x += 1
         col += 1
         new_stock_level.append(restock)
     col = 65
     for x in new_stock_level:
-        stock.update(chr(col)+"2", x)
+        stock.update(chr(col) + "2", x)
         col += 1
     print("Total stock levels updated...")
 
-def order_prompt(book,index):
+
+def order_prompt(book, index):
     """
-    Asks the user if they want to restock a book if stocks are low. 
+    Asks the user if they want to restock a book if stocks are low.
     """
     while True:
-        choice = input(f"stock level of {book} is low.\n Would you like to restock? y/n\n")
+        choice = input(
+            f"stock level of {book} is low.\n Would you like to restock? y/n\n"
+        )
         if choice == "y":
-            stock(book,index)
+            stock(book, index)
             break
         elif choice == "n":
             break
         else:
             print("you have made an incorrect selection. Please try again")
-    
-def update_stock_restock(data,index):
+
+
+def update_stock_restock(data, index):
     """
-    updates stock tracking sheet, adding the restock value to current stock.  
+    updates stock tracking sheet, adding the restock value to current stock.
     """
-    print(f"Updating total stock levels...")
-    stock = SHEET.worksheet('stock')
-    col = str(chr(65+index))+"2"
+    print("Updating total stock levels...")
+    stock = SHEET.worksheet("stock")
+    col = str(chr(65 + index)) + "2"
     current_stock = stock.acell(col).value
-    if current_stock == None:
+    if current_stock is None:
         current_stock = 0
-    stock.update(col,int(data)+int(current_stock))
+    stock.update(col, int(data) + int(current_stock))
     print(f"{col} {int(data)+int(current_stock)}")
-    print(f"Total stock levels updated.")
+    print("Total stock levels updated.")
+
 
 def update_sheet(data, sheet):
     """
     Updates worksheets and adds new row with data provided.
-    Adapted from the love_sandwiches code along project. 
+    Adapted from the love_sandwiches code along project.
     """
     print(f"Updating {sheet} worksheet...")
     worksheet = SHEET.worksheet(sheet)
     worksheet.append_row(data)
     print(f"{sheet} worksheet updated successfully.\n")
+
 
 def run_again():
     """
@@ -186,24 +201,26 @@ def run_again():
         else:
             print("you have made an incorrect selection. Please try again")
 
+
 def recalculate_cpu(sheet):
     """
-    Reworks out the average CPU 
+    Reworks out the average CPU
     """
-    print("Recalculating cost per unit...") 
+    print("Recalculating cost per unit...")
     worksheet = SHEET.worksheet(sheet).col_values(4)
     total = 0
-    for ind in range(1,len(worksheet)):
+    for ind in range(1, len(worksheet)):
         total = total + float(worksheet[ind])
-    cpu = total / (len(worksheet)-1)
+    cpu = total / (len(worksheet) - 1)
     return cpu
+
 
 def select_con_or_online():
     """
-    allows the user to enter the source of the sale. Either online or convention sales. 
-    If convention sales are chosen then it prompts for the name of the convention. 
+    allows the user to enter the source of the sale. Either online or convention sales.
+    If convention sales are chosen then it prompts for the name of the convention.
     """
-    while True: 
+    while True:
         source = input(f"Are you updating online or convention sales?\n")
         if source == "online":
             if confirm_choice(f"You are updating {source} sales."):
@@ -211,7 +228,7 @@ def select_con_or_online():
                 break
         elif source == "convention":
             if confirm_choice(f"You are updating {source} sales."):
-                convention = input(f"Which convention are you updating?\n")
+                convention = input("Which convention are you updating?\n")
                 sales(convention)
                 break
         else:
@@ -233,13 +250,13 @@ def sales(source):
         if validate_date(date):
             data.append(date)
             break
-    for ind in range(2,len(sales[0])):
-        while True: 
+    for ind in range(2, len(sales[0])):
+        while True:
             x = input(f"Enter sale numbers for {books[ind]}\n")
             if validate_input(x):
                 profit.append(int(x) * float(profit_per_sale[y]))
                 data.append(x)
-                y+=1
+                y += 1
                 break
     update_sheet(data, "sales")
     update_stock_levels(data[2:None])
@@ -247,57 +264,72 @@ def sales(source):
     if source != "online":
         update_con_costs(source, date, profit)
 
+
 def total_profit(data):
     """
-    works out sum of total profit when passed an array. 
+    works out sum of total profit when passed an array.
     """
     total = 0
     for ind in data:
         total += ind
-    return(total)
+    return total
 
 
 def update_con_costs(source, date, profit):
     """
     updates the cons sheet with all costs incurred and uses these to work out the total profit
     """
-    while True: 
+    while True:
         data = [source, date]
         while True:
-            table_costs = input(f"Please enter the table costs for {source} convention\n")
+            table_costs = input(
+                f"Please enter the table costs for {source} convention\n"
+            )
             if validate_input(table_costs):
                 data.append(table_costs)
                 break
         while True:
-            travel_costs = input(f"Please enter the travel costs for {source} convention\n")
+            travel_costs = input(
+                f"Please enter the travel costs for {source} convention\n"
+            )
             if validate_input(travel_costs):
                 data.append(travel_costs)
                 break
         while True:
-            parking_costs = input(f"Please enter the parking costs for {source} convention\n")
+            parking_costs = input(
+                f"Please enter the parking costs for {source} convention\n"
+            )
             if validate_input(parking_costs):
                 data.append(parking_costs)
                 break
         while True:
-            misc_costs = input(f"Please enter any misc costs for {source} convention\n")
+            misc_costs = input(
+                f"Please enter any misc costs for {source} convention\n"
+            )
             if validate_input(misc_costs):
                 data.append(misc_costs)
                 break
         total_costs = 0
-        for ind in range(2,len(data)):
+        for ind in range(2, len(data)):
             total_costs = total_costs + int(data[ind])
         net_profit = profit - total_costs
         data.append(net_profit)
         data.append(total_costs)
-        if confirm_choice(f"You are updating the sales for {source} convention. \n Table costs are £{data[3]} \n Travel costs are £{data[4]} \n Misc costs are £{data[5]}\n"):
+        if confirm_choice(
+            f"You are updating the sales for {source} convention. \n Table costs are £{data[3]} \n Travel costs are £{data[4]} \n Misc costs are £{data[5]}\n"
+        ):
             update_sheet(data, "cons")
             break
+
+
 comics = []
+
+
 def add_book(index):
     """
-    adds comic book to the comics list to allow data to be easily accessed. 
+    adds comic book to the comics list to allow data to be easily accessed.
     """
-    keys = ["title","sale price","cpu","profit per sale"]
+    keys = ["title", "sale price", "cpu", "profit per sale"]
     book = {}
     title = input(f"What is the title of the book?\n")
     while True:
@@ -306,17 +338,18 @@ def add_book(index):
             book[keys[0]] = title
             book[keys[1]] = price
             book[keys[2]] = 0
-            book[keys[3]] = float(book[keys[1]])- book[keys[2]]
+            book[keys[3]] = float(book[keys[1]]) - book[keys[2]]
             break
     comics.append(book)
     new_spreadsheet(title)
     update_headers(title)
-    update_price(title,price)
+    update_price(title, price)
     stock(title, index)
+
 
 def validate_input(data):
     """
-    Checks the user input and confirms that the input is the expected data type. 
+    Checks the user input and confirms that the input is the expected data type.
     """
     try:
         float(data)
@@ -325,18 +358,20 @@ def validate_input(data):
         return False
     return True
 
+
 def validate_date(data):
     """
-    Checks the user input and confirms that the input is the a valid date. 
+    Checks the user input and confirms that the input is the a valid date.
     """
     date = str(data).split("/")
     try:
-        if len(date) !=3: 
+        if len(date) != 3:
             raise ValueError(
-                f"The date inputed is incorrect. Please provide date in the following format dd/mm/yyyy"
+                "The date inputed is incorrect. Please provide date in the following format dd/mm/yyyy"
             )
         import datetime
-        date = datetime.datetime(int(date[2]),int(date[1]),int(date[0]))
+
+        date = datetime.datetime(int(date[2]), int(date[1]), int(date[0]))
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again\n")
@@ -344,65 +379,67 @@ def validate_date(data):
     return True
 
 
-
 def new_spreadsheet(title):
     """
-    creates a new worksheet to track stock levels. 
+    creates a new worksheet to track stock levels.
     """
-    worksheet = SHEET.add_worksheet(title= title, rows="100", cols="20")
-    update_sheet(["restock","cost","date","cost per unit"], title)
+    worksheet = SHEET.add_worksheet(title=title, rows="100", cols="20")
+    update_sheet(["restock", "cost", "date", "cost per unit"], title)
+
 
 def update_headers(title):
     stock = SHEET.worksheet("stock")
     sales = SHEET.worksheet("sales")
     num = len(stock.get_all_values()[0])
-    stock_row = chr(num+65)+"1"
-    sales_row = chr(num+67)+"1"
-    stock.update(stock_row,title)
-    sales.update(sales_row,title)
-    
+    stock_row = chr(num + 65) + "1"
+    sales_row = chr(num + 67) + "1"
+    stock.update(stock_row, title)
+    sales.update(sales_row, title)
+
+
 def update_price(title, price):
     """
     updates the price of a new book onto the price worksheet
     """
     pricework = SHEET.worksheet("price")
-    y = len(pricework.get_all_values())+1
-    title_cell = "A"+str(y)
-    price_cell = "B"+str(y)
+    y = len(pricework.get_all_values()) + 1
+    title_cell = "A" + str(y)
+    price_cell = "B" + str(y)
     pricework.update(title_cell, title)
     pricework.update(price_cell, price)
 
-        
 
 def populate_comic_list():
     """
     creates a dictionary with sales data for each book.
     """
     print("loading application data...")
-    keys = ["title","sale price","cpu","profit per sale"]
+    keys = ["title", "sale price", "cpu", "profit per sale"]
     book = {}
-    sales = SHEET.worksheet('sales').get_all_values()
+    sales = SHEET.worksheet("sales").get_all_values()
     titles = data[0]
     x = 0
-    for ind in range(2,len(titles)):
+    for ind in range(2, len(titles)):
         stock = SHEET.worksheet(titles[ind])
         price = SHEET.worksheet("price")
         book[keys[0]] = titles[ind]
         book[keys[1]] = float(price.get_all_values()[x][1])
         book[keys[2]] = float(stock.col_values(4)[-1])
-        book[keys[3]] = book[keys[1]]- book[keys[2]]
-        x+=1
+        book[keys[3]] = book[keys[1]] - book[keys[2]]
+        x += 1
         comics.append(book.copy())
     print("Application data loaded.")
 
+
 def get_profit_per_sale():
     """
-    generates an array with the profit per sale for each book. 
+    generates an array with the profit per sale for each book.
     """
     profit_list = []
     for ind in comics:
         profit_list.append(ind.get("profit per sale"))
-    return profit_list 
+    return profit_list
+
 
 def main():
     """
@@ -413,8 +450,5 @@ def main():
     stock_or_sales()
     run_again()
 
+
 main()
-
-
-
-
