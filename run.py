@@ -388,6 +388,9 @@ def new_spreadsheet(title):
 
 
 def update_headers(title):
+    """
+    Updates headers for the stock and sales worksheet whenever a new book is added.
+    """
     stock = SHEET.worksheet("stock")
     sales = SHEET.worksheet("sales")
     num = len(stock.get_all_values()[0])
