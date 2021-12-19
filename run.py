@@ -377,8 +377,14 @@ def populate_comic_list():
         comics.append(book.copy())
     print("Application data loaded.")
 
-
-
+def get_profit_per_sale():
+    """
+    generates an array with the profit per sale for each book. 
+    """
+    profit_list = []
+    for ind in comics:
+        cpu_list.append(ind.get("profit per sale"))
+    return profit_list 
 def main():
     """
     Runs all program functions
@@ -388,8 +394,6 @@ def main():
     stock_or_sales()
     run_again()
 
-main()
-# update_stock_levels([0,0,0,0,0])
-# # stock("deadbeat",0)
-# # main()
-# # order_prompt("deadbeat",0)
+# main()
+populate_comic_list()
+print(get_profit_per_sale())
