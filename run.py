@@ -132,11 +132,12 @@ def update_stock_levels(data, type):
 
     
 def update_stock_restock(data,index):
+    """
+    updates stock tracking sheet, adding the restock value to current stock.  
+    """
     stock = SHEET.worksheet('stock')
     col = str(chr(65+index))+"2"
     current_stock = stock.acell(col).value
-    print(current_stock)
-    print(col)
     stock.update(col, int(data) + int(current_stock))
 
 
