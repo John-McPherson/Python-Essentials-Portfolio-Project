@@ -225,6 +225,9 @@ def sales(source):
     sales = SHEET.worksheet("sales").get_all_values()
     books = sales[0]
     data = [source]
+    profit = []
+    profit_per_sale = get_profit_per_sale()
+    y = 0
     while True:
         date = input(f"Please enter the date of sale\n")
         if validate_date(date):
@@ -234,10 +237,13 @@ def sales(source):
         while True: 
             x = input(f"Enter sale numbers for {books[ind]}\n")
             if validate_input(x):
+                profit.append(int(x) * float(profit_per_sale[y]))
                 data.append(x)
+                y+=1
                 break
     update_sheet(data, "sales")
     update_stock_levels(data[2:None])
+    print(profit)
     if source != "online":
         update_con_costs(source, date)
 
@@ -373,7 +379,7 @@ def populate_comic_list():
         book[keys[1]] = float(price.get_all_values()[x][1])
         book[keys[2]] = float(stock.col_values(4)[-1])
         book[keys[3]] = book[keys[1]]- book[keys[2]]
-        x=+1
+        x+=1
         comics.append(book.copy())
     print("Application data loaded.")
 
@@ -383,8 +389,9 @@ def get_profit_per_sale():
     """
     profit_list = []
     for ind in comics:
-        cpu_list.append(ind.get("profit per sale"))
+        profit_list.append(ind.get("profit per sale"))
     return profit_list 
+
 def main():
     """
     Runs all program functions
@@ -396,4 +403,5 @@ def main():
 
 # main()
 populate_comic_list()
-print(get_profit_per_sale())
+print(comics)
+
