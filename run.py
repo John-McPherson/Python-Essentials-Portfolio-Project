@@ -133,8 +133,11 @@ def update_stock_levels(data, type):
     
 def update_stock_restock(data,index):
     stock = SHEET.worksheet('stock')
-    col = 65
-    stock.update(chr(col+index)+"2", data)
+    col = str(chr(65+index))+"2"
+    current_stock = stock.acell(col).value
+    print(current_stock)
+    print(col)
+    stock.update(col, int(data) + int(current_stock))
 
 
 
@@ -364,7 +367,5 @@ def main():
     stock_or_sales()
     run_again()
 
-# main()
-# update_stock_levels([30,20,100,500],"sales")
-# sales("online")
-select_book()
+main()
+
