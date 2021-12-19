@@ -301,10 +301,12 @@ def populate_comic_list():
     book = {}
     sales = SHEET.worksheet('sales').get_all_values()
     titles = data[0]
+    x = 0
     for ind in range(2,len(titles)):
         stock = SHEET.worksheet(titles[ind])
+        price = SHEET.worksheet("price")
         book[keys[0]] = titles[ind]
-        book[keys[1]] = float(stock.col_values(5)[-1])
+        book[keys[1]] = float(price.get_all_values()[x][1])
         book[keys[2]] = float(stock.col_values(4)[-1])
         book[keys[3]] = book[keys[1]]- book[keys[2]]
         comics.append(book.copy())
@@ -321,6 +323,4 @@ def main():
     stock_or_sales()
     run_again()
 
-# main()
-
-sales("convention")
+main()
