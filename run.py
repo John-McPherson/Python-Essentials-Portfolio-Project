@@ -70,7 +70,7 @@ def select_book():
                 stock(books[book],book)
                 break
             else:
-                add_book()
+                add_book(book)
                 break
         print(f"Incorrect data. Please enter a number between 1 and {len(books)}\n")    
     
@@ -138,9 +138,11 @@ def update_stock_restock(data,index):
     stock = SHEET.worksheet('stock')
     col = str(chr(65+index))+"2"
     current_stock = stock.acell(col).value
+    print(f"before if {current_stock}")
+    if current_stock == None:
+        current_stock = 0
+    print(f"after if {current_stock}")
     stock.update(col, int(data) + int(current_stock))
-
-
 
 def update_sheet(data, sheet):
     """
@@ -255,7 +257,7 @@ def update_con_costs(source, date):
             update_sheet(data, "cons")
             break
 comics = []
-def add_book():
+def add_book(index):
     """
     adds comic book to the comics list to allow data to be easily accessed. 
     """
@@ -274,7 +276,7 @@ def add_book():
     new_spreadsheet(title)
     update_headers(title)
     update_price(title,price)
-    stock(title)
+    stock(title, index)
 
 def validate_input(data):
     """
