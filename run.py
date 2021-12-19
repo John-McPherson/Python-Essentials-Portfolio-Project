@@ -60,24 +60,25 @@ def select_book():
         print("which book would you like to update?")
         for x in books:
             print(f"{i}. {x}")
-            i=i+1
+            i = i + 1
         book = int(input(f"Please enter a number between 1 and {len(books)}\n"))-1
         if book <= len(books):
             if book != len(books)-1:
                 print(len(books))
-                print (book)
                 print(book)
-                stock(books[book],book)
+                print(book)
+                stock(books[book], book)
                 break
             else:
                 add_book(book)
                 break
         print(f"Incorrect data. Please enter a number between 1 and {len(books)}\n")    
     
-def stock(book,index):
+def stock(book, index):
     """
     function that allows the user to update stock levels of all comic books.
-    """    
+    """
+    print("test stock")    
     while True:
         print(f"updating stock for {book}...")
         stock = []
@@ -103,46 +104,63 @@ def stock(book,index):
             break
         
     update_sheet(stock, book)
+    print(f"restock: {restock} and index{index}")
     update_stock_restock(restock,index)
 
-def update_stock_levels(data, type):
+def update_stock_levels(data):
     """
     Updates total stock level adding books on a restock and removing them whenever sales are computed.
     """
     print("updating total stock levels...")
     stock = SHEET.worksheet('stock')
-    books = stock.get_all_values()[-1]
+    books = stock.get_all_values()
     new_stock_level = []
     col = 65
     x = 0
-    if type == "sales":
-        for ind in books:
-            restock = int(ind) - int(data[x])
-            x+=1
-            new_stock_level.append(restock)
-    else:
-        for ind in books:
-            restock = int(ind)+ int(data[x])
-            x+=1
-            new_stock_level.append(restock)
+
+
+    for ind in books[-1]:
+        restock = int(ind) - int(data[x])
+        if restock < 50:
+            order_prompt(books[0][x],x)
+            stock = SHEET.worksheet('stock')
+            restock = stock.acell(chr(col)+"2").value
+        x+=1
+        col += 1
+        new_stock_level.append(restock)
+    col = 65
     for x in new_stock_level:
         stock.update(chr(col)+"2", x)
         col += 1
     print("Total stock levels updated...")
 
+def order_prompt(book,index):
+    """
+    Asks the user if they want to restock a book if stocks are low. 
+    """
+    while True:
+        choice = input(f"stock level of {book} is low.\n Would you like to restock? y/n\n")
+        if choice == "y":
+            stock(book,index)
+            break
+        elif choice == "n":
+            break
+        else:
+            print("you have made an incorrect selection. Please try again")
     
 def update_stock_restock(data,index):
     """
     updates stock tracking sheet, adding the restock value to current stock.  
     """
+    print(f"Updating total stock levels...")
     stock = SHEET.worksheet('stock')
     col = str(chr(65+index))+"2"
     current_stock = stock.acell(col).value
-    print(f"before if {current_stock}")
     if current_stock == None:
         current_stock = 0
-    print(f"after if {current_stock}")
-    stock.update(col, int(data) + int(current_stock))
+    stock.update(col,int(data)+int(current_stock))
+    print(f"{col} {int(data)+int(current_stock)}")
+    print(f"Total stock levels updated.")
 
 def update_sheet(data, sheet):
     """
@@ -219,7 +237,7 @@ def sales(source):
                 data.append(x)
                 break
     update_sheet(data, "sales")
-    update_stock_levels(data[2:None],"sales")
+    update_stock_levels(data[2:None])
     if source != "online":
         update_con_costs(source, date)
 
@@ -371,4 +389,7 @@ def main():
     run_again()
 
 main()
-
+# update_stock_levels([0,0,0,0,0])
+# # stock("deadbeat",0)
+# # main()
+# # order_prompt("deadbeat",0)
