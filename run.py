@@ -245,7 +245,7 @@ def sales(source):
     update_stock_levels(data[2:None])
     profit = total_profit(profit)
     if source != "online":
-        update_con_costs(source, date)
+        update_con_costs(source, date, profit)
 
 def total_profit(data):
     """
@@ -257,7 +257,7 @@ def total_profit(data):
     return(total)
 
 
-def update_con_costs(source, date):
+def update_con_costs(source, date, profit):
     """
     updates the cons sheet with all costs incurred and uses these to work out the total profit
     """
@@ -286,6 +286,8 @@ def update_con_costs(source, date):
         total_costs = 0
         for ind in range(2,len(data)):
             total_costs = total_costs + int(data[ind])
+        net_profit = profit - total_costs
+        data.append(net_profit)
         data.append(total_costs)
         if confirm_choice(f"You are updating the sales for {source} convention. \n Table costs are £{data[3]} \n Travel costs are £{data[4]} \n Misc costs are £{data[5]}\n"):
             update_sheet(data, "cons")
@@ -411,8 +413,8 @@ def main():
     stock_or_sales()
     run_again()
 
-# main()
+main()
 
-print(total_profit([30,31.5,30,15,1.5]))
+
 
 
