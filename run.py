@@ -102,7 +102,37 @@ def stock(book):
             break
         
     update_sheet(stock, book)
-            
+
+def update_stock_levels(data, type):
+    """
+    Updates total stock level adding books on a restock and removing them whenever sales are computed.
+    """
+    print("updating total stock levels...")
+    stock = SHEET.worksheet('stock')
+    books = stock.get_all_values()[-1]
+    new_stock_level = []
+    col = 65
+    x = 0
+    if type == "sales":
+        for ind in books:
+            restock = int(ind) - data[x]
+            x+=1
+            new_stock_level.append(restock)
+    else:
+        for ind in books:
+            restock = int(ind)+ data[x]
+            x+=1
+            new_stock_level.append(restock)
+    for x in new_stock_level:
+        stock.update(chr(col)+"2", x)
+        col += 1
+    print("Total stock levels updated...")
+
+    
+
+
+
+
 def update_sheet(data, sheet):
     """
     Updates worksheets and adds new row with data provided.
@@ -328,4 +358,6 @@ def main():
     stock_or_sales()
     run_again()
 
-main()
+# main()
+update_stock_levels([30,20,100,500],"sales")
+
