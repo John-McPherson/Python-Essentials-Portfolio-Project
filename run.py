@@ -243,9 +243,19 @@ def sales(source):
                 break
     update_sheet(data, "sales")
     update_stock_levels(data[2:None])
-    print(profit)
+    profit = total_profit(profit)
     if source != "online":
         update_con_costs(source, date)
+
+def total_profit(data):
+    """
+    works out sum of total profit when passed an array. 
+    """
+    total = 0
+    for ind in data:
+        total += ind
+    return(total)
+
 
 def update_con_costs(source, date):
     """
@@ -402,6 +412,7 @@ def main():
     run_again()
 
 # main()
-populate_comic_list()
-print(comics)
+
+print(total_profit([30,31.5,30,15,1.5]))
+
 
