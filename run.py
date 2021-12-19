@@ -234,6 +234,7 @@ def add_book():
     new_spreadsheet(title)
     update_headers(title)
     update_price(title,price)
+    stock(title)
 
 def validate_input(data):
     """
