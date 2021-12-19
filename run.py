@@ -115,12 +115,12 @@ def update_stock_levels(data, type):
     x = 0
     if type == "sales":
         for ind in books:
-            restock = int(ind) - data[x]
+            restock = int(ind) - int(data[x])
             x+=1
             new_stock_level.append(restock)
     else:
         for ind in books:
-            restock = int(ind)+ data[x]
+            restock = int(ind)+ int(data[x])
             x+=1
             new_stock_level.append(restock)
     for x in new_stock_level:
@@ -208,6 +208,7 @@ def sales(source):
                 data.append(x)
                 break
     update_sheet(data, "sales")
+    update_stock_levels(data[2:None],"sales")
     if source != "online":
         update_con_costs(source, date)
 
@@ -359,5 +360,5 @@ def main():
     run_again()
 
 # main()
-update_stock_levels([30,20,100,500],"sales")
-
+# update_stock_levels([30,20,100,500],"sales")
+sales("online")
