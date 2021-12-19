@@ -222,11 +222,15 @@ def add_book():
     keys = ["title","sale price","cpu","profit per sale"]
     book = {}
     title = input(f"What is the title of the book?\n")
-    price = input(f"What is the sale price of the book?\n")
-    book[keys[0]] = title
-    book[keys[1]] = price
-    book[keys[2]] = 0
-    book[keys[3]] = float(book[keys[1]])- book[keys[2]]
+    while True:
+        price = input(f"What is the sale price of the book?\n")
+        if validate_input(price):
+            book[keys[0]] = title
+            book[keys[1]] = price
+            book[keys[2]] = 0
+            book[keys[3]] = float(book[keys[1]])- book[keys[2]]
+            break
+    print(book)
     comics.append(book)
     new_spreadsheet(title)
     update_headers(title)
