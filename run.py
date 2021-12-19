@@ -230,7 +230,6 @@ def add_book():
             book[keys[2]] = 0
             book[keys[3]] = float(book[keys[1]])- book[keys[2]]
             break
-    print(book)
     comics.append(book)
     new_spreadsheet(title)
     update_headers(title)
@@ -311,7 +310,6 @@ def populate_comic_list():
         price = SHEET.worksheet("price")
         book[keys[0]] = titles[ind]
         book[keys[1]] = float(price.get_all_values()[x][1])
-        print(f"price is {price.get_all_values()}")
         book[keys[2]] = float(stock.col_values(4)[-1])
         book[keys[3]] = book[keys[1]]- book[keys[2]]
         x=+1
