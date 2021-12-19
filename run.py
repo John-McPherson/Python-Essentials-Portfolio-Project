@@ -66,14 +66,15 @@ def select_book():
             if book != len(books)-1:
                 print(len(books))
                 print (book)
-                stock(books[book])
+                print(book)
+                stock(books[book],book)
                 break
             else:
                 add_book()
                 break
         print(f"Incorrect data. Please enter a number between 1 and {len(books)}\n")    
     
-def stock(book):
+def stock(book,index):
     """
     function that allows the user to update stock levels of all comic books.
     """    
@@ -102,6 +103,7 @@ def stock(book):
             break
         
     update_sheet(stock, book)
+    update_stock_restock(restock,index)
 
 def update_stock_levels(data, type):
     """
@@ -129,7 +131,10 @@ def update_stock_levels(data, type):
     print("Total stock levels updated...")
 
     
-
+def update_stock_restock(data,index):
+    stock = SHEET.worksheet('stock')
+    col = 65
+    stock.update(chr(col+index)+"2", data)
 
 
 
@@ -361,4 +366,5 @@ def main():
 
 # main()
 # update_stock_levels([30,20,100,500],"sales")
-sales("online")
+# sales("online")
+select_book()
