@@ -508,6 +508,7 @@ def set_up():
         print(
             "This is the first time you have used the comics sale tracker \n"
             "Running intial set up...\n"
+            "Adding first book...\n"
         )
         add_book(0)
     else:
