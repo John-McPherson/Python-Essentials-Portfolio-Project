@@ -491,6 +491,26 @@ def main():
     Runs all program functions
     """
     populate_comic_list()
-    print("Welcome to the comic stock tracker.")
-    stock_or_sales()
+    set_up()
     run_again()
+
+
+def set_up():
+    """
+    checks to ensure there is data inputed. If not
+    prompts used to add data.
+    """
+    print("Welcome to the comic stock tracker.")
+    if comics == []:
+        print(
+            "This is the first time you have used the comics sale tracker \n"
+            "Running intial set up...\n"
+        )
+        add_book(0)
+    else:
+        stock_or_sales()
+
+
+# main()
+populate_comic_list()
+set_up()
