@@ -89,7 +89,6 @@ def restock_book(book, index):
     """
     function that allows the user to update stock levels of all comic books.
     """
-    print("test stock")
     while True:
         print(f"updating stock for {book}...")
         stock = []
@@ -175,7 +174,6 @@ def update_stock_restock(stock_data, index):
     if current_stock is None:
         current_stock = 0
     stock.update(col, int(stock_data) + int(current_stock))
-    print(f"{col} {int(stock_data)+int(current_stock)}")
     print("Total stock levels updated.")
 
 
@@ -438,8 +436,9 @@ def update_headers(title):
     sales_sheet = SHEET.worksheet("sales")
     try:
         num = len(stock.get_all_values()[0])
-    finally:
+    except IndexError:
         num = 0
+    print(f"test: {num}")
     stock_row = chr(num + 65) + "1"
     sales_row = chr(num + 67) + "1"
     stock.update(stock_row, title)
@@ -515,6 +514,4 @@ def set_up():
         stock_or_sales()
 
 
-# main()
-populate_comic_list()
-set_up()
+main()
