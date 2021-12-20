@@ -26,7 +26,10 @@ This project is the third milestone project for the Code Institute Diploma in Fu
 * [Features left to implement](features-left-to-implement)
     * [Automatic Reordering](#automatic-reordering)
 * [Technologies Used](technologies-used)
-
+    * [Languages](#languages)
+    * [Version Control](#version-control)
+    * [Python Packages](#python-packages)
+    * [Other Software](#other-software)
 
 ## **UX** 
 
@@ -116,8 +119,17 @@ Before starting on the project, I created a mock up using lucid chart to break d
 
 ## **Technologies Used**
 
+### **Languages** 
 * Python
+
+### **Version Control** 
 * Git
+
+### **Languages** 
+* Gspread
+* datetime
+
+### **Other Software** 
 * Google Docs
 * Google Sheets
 
