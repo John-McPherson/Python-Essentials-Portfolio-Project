@@ -41,7 +41,6 @@ def stock_or_sales():
 def confirm_choice(choice):
     """
     Prompts the user to confirm their choice.
-
     """
     confirm = input(f"{choice} is that correct? y/n\n")
     if confirm == "y":
@@ -112,7 +111,7 @@ def restock_book(book, index):
             print("Updated stock")
             break
     update_sheet(stock, book)
-    recalculate_cpu(index, book)
+    update_cpu_on_restock(index, book)
     update_stock_restock(restock, index)
 
 
