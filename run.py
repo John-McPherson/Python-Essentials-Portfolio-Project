@@ -207,7 +207,6 @@ def recalculate_cpu(sheet):
     """
     Works out the average CPU
     """
-    print("Recalculating cost per unit...")
     worksheet = SHEET.worksheet(sheet).col_values(4)
     total = 0
     for ind in range(1, len(worksheet)):
