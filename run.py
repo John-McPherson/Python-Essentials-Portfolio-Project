@@ -108,13 +108,12 @@ def restock_book(book, index):
                 break
         stock.append(round(int(stock[1]) / int(stock[0]), 2))
         if confirm_choice(
-            f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]}\
-             which works out at cpu £{stock[3]}"
+            f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]} "
+            f"which works out at cpu £{stock[3]}"
         ):
             print("updating stock")
             break
     update_sheet(stock, book)
-    print(f"restock: {restock} and index{index}")
     update_stock_restock(restock, index)
 
 
@@ -462,4 +461,4 @@ def main():
     run_again()
 
 
-# main()
+main()
