@@ -31,6 +31,11 @@ This project is the third milestone project for the Code Institute Diploma in Fu
     * [Python Packages](#python-packages)
     * [Other Software](#other-software)
 
+* [Credits](#credits)
+    * [Content](#content)
+    * [Acknowledgements](#acknowledgements)
+
+
 ## **UX** 
 
 ### **User stories**
@@ -133,7 +138,20 @@ Before starting on the project, I created a mock up using lucid chart to break d
 * Google Docs
 * Google Sheets
 
+### **Content**
 
+## **Credits**
+
+All code was written by me with the following exceptions; 
+
+* The code for importing Gspread and setting the SCOPE was adapted from the Code Institute Love Running Code Along project.
+* The code for the update_sheet function was taken from the Code Institute Love Running Code Along project.
+
+### **Acknowledgements** 
+
+* My mentor [Antonija Simic](https://github.com/tonkec) for their feedback and support during the development of the project. 
+* [Code Institute](https://codeinstitute.net/) for giving me the skills through their tutorials to create this app. 
+* [W3Schools](https://www.w3schools.com/) for helping me whenever I got stuck.
 
 
 
