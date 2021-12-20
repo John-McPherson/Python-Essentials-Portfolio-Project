@@ -428,7 +428,6 @@ def populate_comic_list():
     print("loading application data...")
     keys = ["title", "sale price", "cpu", "profit per sale"]
     book = {}
-    sales = SHEET.worksheet("sales").get_all_values()
     titles = data[0]
     x = 0
     for ind in range(2, len(titles)):
@@ -463,4 +462,6 @@ def main():
     run_again()
 
 
-main()
+# main()
+populate_comic_list()
+print(comics)
