@@ -78,7 +78,8 @@ def select_book():
                 add_book(book)
                 break
         print(
-            f"Incorrect data. Please enter a number between 1 and {len(books)}\n"
+            f"Incorrect data. Please enter a number between 1 and {len(books)}\
+            \n"
         )
 
 
@@ -107,7 +108,8 @@ def stock(book, index):
                 break
         stock.append(round(int(stock[1]) / int(stock[0]), 2))
         if confirm_choice(
-            f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]} which works out at cpu £{stock[3]}"
+            f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]}\
+             which works out at cpu £{stock[3]}"
         ):
             print("updating stock")
             break
@@ -118,8 +120,8 @@ def stock(book, index):
 
 def update_stock_levels(data):
     """
-    Updates total stock level adding books on a restock and removing them whenever sales are
-    computed.
+    Updates total stock level adding books on a restock
+    and removing them whenever sales are computed.
     """
     print("updating total stock levels...")
     stock = SHEET.worksheet("stock")
@@ -217,11 +219,12 @@ def recalculate_cpu(sheet):
 
 def select_con_or_online():
     """
-    allows the user to enter the source of the sale. Either online or convention sales.
-    If convention sales are chosen then it prompts for the name of the convention.
+    allows the user to enter the source of the sale.
+    Either online or convention sales. If convention sales
+    are chosen then it prompts for the name of the convention.
     """
     while True:
-        source = input(f"Are you updating online or convention sales?\n")
+        source = input("Are you updating online or convention sales?\n")
         if source == "online":
             if confirm_choice(f"You are updating {source} sales."):
                 sales(source)
@@ -246,7 +249,7 @@ def sales(source):
     profit_per_sale = get_profit_per_sale()
     y = 0
     while True:
-        date = input(f"Please enter the date of sale\n")
+        date = input("Please enter the date of sale\n")
         if validate_date(date):
             data.append(date)
             break
@@ -277,7 +280,8 @@ def total_profit(data):
 
 def update_con_costs(source, date, profit):
     """
-    updates the cons sheet with all costs incurred and uses these to work out the total profit
+    updates the cons sheet with all costs incurred and uses
+    these to work out the total profit
     """
     while True:
         data = [source, date]
@@ -316,7 +320,9 @@ def update_con_costs(source, date, profit):
         data.append(net_profit)
         data.append(total_costs)
         if confirm_choice(
-            f"You are updating the sales for {source} convention. \n Table costs are £{data[3]} \n Travel costs are £{data[4]} \n Misc costs are £{data[5]}\n"
+            f"You are updating the sales for {source} convention.\n"
+            f"Table costs are £{data[3]} \n Travel costs are £{data[4]}\n"
+            f"Misc costs are £{data[5]}\n"
         ):
             update_sheet(data, "cons")
             break
@@ -331,9 +337,9 @@ def add_book(index):
     """
     keys = ["title", "sale price", "cpu", "profit per sale"]
     book = {}
-    title = input(f"What is the title of the book?\n")
+    title = input("What is the title of the book?\n")
     while True:
-        price = input(f"What is the sale price of the book?\n")
+        price = input("What is the sale price of the book?\n")
         if validate_input(price):
             book[keys[0]] = title
             book[keys[1]] = price
@@ -349,7 +355,8 @@ def add_book(index):
 
 def validate_input(data):
     """
-    Checks the user input and confirms that the input is the expected data type.
+    Checks the user input and confirms that the
+    input is the expected data type.
     """
     try:
         float(data)
@@ -367,7 +374,8 @@ def validate_date(data):
     try:
         if len(date) != 3:
             raise ValueError(
-                "The date inputed is incorrect. Please provide date in the following format dd/mm/yyyy"
+                "The date inputed is incorrect.\
+                 Please provide date in the following format dd/mm/yyyy"
             )
         import datetime
 
@@ -389,7 +397,8 @@ def new_spreadsheet(title):
 
 def update_headers(title):
     """
-    Updates headers for the stock and sales worksheet whenever a new book is added.
+    Updates headers for the stock and sales
+    worksheet whenever a new book is added.
     """
     stock = SHEET.worksheet("stock")
     sales = SHEET.worksheet("sales")
