@@ -331,13 +331,45 @@ def update_con_costs(source, date, profit):
 comics = []
 
 
+def validate_book_title(comic_title):
+    """
+    Checks to ensure that when adding a book title
+    it is not already in use/.
+    """
+    titles = []
+    book_exists = False
+    for ind in comics:
+        titles.append(ind.get("title"))
+    for book in titles:
+        if comic_title == book:
+            print(f"There is already a book with the title {book}")
+            book_exists = True
+    if book_exists is True:
+        while True:
+            choice = input("Do you want to add a different title? y/n\n")
+            if choice == "y":
+                return False
+            elif choice == "n":
+                run_again()
+                break
+            else:
+                print(
+                    "you have made an incorrect choice. Please select y or n"
+                )
+    else:
+        return True
+
+
 def add_book(index):
     """
     adds comic book to the comics list to allow data to be easily accessed.
     """
     keys = ["title", "sale price", "cpu", "profit per sale"]
     book = {}
-    title = input("What is the title of the book?\n")
+    while True:
+        title = input("What is the title of the book?\n")
+        if validate_book_title(title):
+            break
     while True:
         price = input("What is the sale price of the book?\n")
         if validate_input(price):
@@ -460,6 +492,3 @@ def main():
     print("Welcome to the comic stock tracker.")
     stock_or_sales()
     run_again()
-
-
-main()
