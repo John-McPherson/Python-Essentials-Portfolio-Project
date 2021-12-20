@@ -17,13 +17,14 @@ This project is the third milestone project for the Code Institute Diploma in Fu
     * [Update Spreadsheets](#update-spreadsheets)
     * [Confirm Data](#confirm-data)
     * [Rerun Application](#rerun-application)
-* [Features left to implement](features-left-to-implement)
     * [Update Cost Per Unit](#Update-cost-per-unit)
     * [Add New Book](#add-new-book)
     * [Con Profits](#con-profits)
     * [Low Stock Warning](#low-stock-warning)
-    * [Automatic Reordering](#automatic-reordering)
     * [Data Validation](#data-validation)
+    * [Set up](#set-up)
+* [Features left to implement](features-left-to-implement)
+    * [Automatic Reordering](#automatic-reordering)
 * [Technologies Used](technologies-used)
 
 
@@ -85,7 +86,7 @@ Before starting on the project, I created a mock up using lucid chart to break d
  ### **Rerun Application**
  * Once the application has finished running it gives the user the option to rerun to add any additional sales/ stock that’s required.   
 
-## **Features left to implement**
+
 
 ### **Update Cost Per Unit**
  * When an order is restocked it should automatically recalculate the cost per unit based on total cost of all items. This should also recalculate all previous sales to reflect the new CPU.
@@ -99,13 +100,19 @@ Before starting on the project, I created a mock up using lucid chart to break d
 ### **Low Stock Warning**
  * The application will prompt the user when stocks of an item are running low.
 
+
+### **Data Validation**
+ * The application validates all information to ensure that the correct data is being passed to it. If incorrect data is passed to it will tell the user what the issue is and how they can resolve it. 
+
+ ### **Set Up**
+ * If there are no books inputed in the spreadsheet the program will run a set up function prompting the user to add their comics to the program. 
+
+ ## **Features left to implement**
+
 ### **Automatic Reordering** 
 * The application should offer the user the option to automatically send an email to the printer to order a restock of a book. This email should include:
 	* The restock amount. 
 	* The date of the last reprint. 
-
-### **Data Validation**
- * The application validates all information to ensure that the correct data is being passed to it. If incorrect data is passed to it will tell the user what the issue is and how they can resolve it. 
 
 ## **Technologies Used**
 
@@ -113,6 +120,8 @@ Before starting on the project, I created a mock up using lucid chart to break d
 * Git
 * Google Docs
 * Google Sheets
+
+
 
 
 
