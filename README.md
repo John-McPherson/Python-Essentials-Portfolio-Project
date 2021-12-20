@@ -25,12 +25,12 @@ This project is the third milestone project for the Code Institute Diploma in Fu
     * [Set up](#set-up)
 * [Features left to implement](features-left-to-implement)
     * [Automatic Reordering](#automatic-reordering)
+* [Testing](#testing)
 * [Technologies Used](technologies-used)
     * [Languages](#languages)
     * [Version Control](#version-control)
     * [Python Packages](#python-packages)
     * [Other Software](#other-software)
-
 * [Credits](#credits)
     * [Content](#content)
     * [Acknowledgements](#acknowledgements)
@@ -94,8 +94,6 @@ Before starting on the project, I created a mock up using lucid chart to break d
  ### **Rerun Application**
  * Once the application has finished running it gives the user the option to rerun to add any additional sales/ stock that’s required.   
 
-
-
 ### **Update Cost Per Unit**
  * When an order is restocked it should automatically recalculate the cost per unit based on total cost of all items. This should also recalculate all previous sales to reflect the new CPU.
 
@@ -121,6 +119,10 @@ Before starting on the project, I created a mock up using lucid chart to break d
 * The application should offer the user the option to automatically send an email to the printer to order a restock of a book. This email should include:
 	* The restock amount. 
 	* The date of the last reprint. 
+
+## **Testing**
+
+[Link to External testing document](./TESTING.md)
 
 ## **Technologies Used**
 
