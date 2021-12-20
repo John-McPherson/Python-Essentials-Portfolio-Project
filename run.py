@@ -212,7 +212,7 @@ def recalculate_cpu(sheet):
     for ind in range(1, len(worksheet)):
         total = total + float(worksheet[ind])
     cpu = total / (len(worksheet) - 1)
-    return cpu
+    return round(cpu, 2)
 
 
 def update_cpu_on_restock(index, book):
@@ -528,5 +528,5 @@ def set_up():
 
 populate_comic_list()
 print(comics)
-update_cpu_on_restock(0)
+update_cpu_on_restock(0, "deadbeat")
 print(comics)
