@@ -436,7 +436,10 @@ def update_headers(title):
     """
     stock = SHEET.worksheet("stock")
     sales_sheet = SHEET.worksheet("sales")
-    num = len(stock.get_all_values()[0])
+    try:
+        num = len(stock.get_all_values()[0])
+    except:
+        num = 0
     stock_row = chr(num + 65) + "1"
     sales_row = chr(num + 67) + "1"
     stock.update(stock_row, title)
