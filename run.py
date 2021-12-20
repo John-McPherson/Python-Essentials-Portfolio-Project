@@ -473,7 +473,6 @@ def populate_comic_list():
     titles = data[0]
     counter = 0
     for ind in range(2, len(titles)):
-        stock = SHEET.worksheet(titles[ind])
         price = SHEET.worksheet("price")
         book[keys[0]] = titles[ind]
         book[keys[1]] = float(price.get_all_values()[counter][1])
