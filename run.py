@@ -215,6 +215,13 @@ def recalculate_cpu(sheet):
     return cpu
 
 
+def update_cpu_on_restock(index, book):
+    """
+    updates comic list with correct cpu on restock
+    """
+    comics[index].update({"cpu": recalculate_cpu(book)})
+
+
 def select_con_or_online():
     """
     Allows the user to enter the source of the sale.
@@ -517,4 +524,9 @@ def set_up():
         stock_or_sales()
 
 
-main()
+# main()
+
+populate_comic_list()
+print(comics)
+update_cpu_on_restock(0)
+print(comics)
