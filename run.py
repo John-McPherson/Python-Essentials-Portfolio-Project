@@ -71,9 +71,6 @@ def select_book():
         )
         if book <= len(books):
             if book != len(books) - 1:
-                print(len(books))
-                print(book)
-                print(book)
                 restock_book(books[book], book)
                 break
             else:
