@@ -115,6 +115,7 @@ def restock_book(book, index):
             print("Updated stock")
             break
     update_sheet(stock, book)
+    recalculate_cpu(index, book)
     update_stock_restock(restock, index)
 
 
@@ -524,9 +525,4 @@ def set_up():
         stock_or_sales()
 
 
-# main()
-
-populate_comic_list()
-print(comics)
-update_cpu_on_restock(0, "deadbeat")
-print(comics)
+main()
