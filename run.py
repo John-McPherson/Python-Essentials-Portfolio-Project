@@ -244,8 +244,10 @@ def update_sales(source):
     sales_sheet = SHEET.worksheet("sales").get_all_values()
     books = sales_sheet[0]
     output = [source]
-    profit = []
-    profit_per_sale = get_profit_per_sale()
+    gross_profit = []
+    net_profit = []
+    profit_per_sale = get_book_info("profit per sale")
+    sale_price = get_book_info("sale price")
     counter = 0
     while True:
         date = input("Please enter the date of sale\n")
@@ -256,15 +258,17 @@ def update_sales(source):
         while True:
             choice = input(f"Enter sale numbers for {books[ind]}\n")
             if validate_input(choice):
-                profit.append(int(choice) * float(profit_per_sale[counter]))
+                gross_profit.append(int(choice) * float(sale_price[counter]))
+                net_profit.append(
+                    int(choice) * float(profit_per_sale[counter])
+                )
                 output.append(choice)
                 counter += 1
                 break
     update_sheet(output, "sales")
     update_stock_levels(output[2:None])
-    profit = total_profit(profit)
     if source != "online":
-        update_con_costs(source, date, profit)
+        update_con_costs(source, date, gross_profit, net_profit)
 
 
 def total_profit(profit_array):
@@ -277,7 +281,7 @@ def total_profit(profit_array):
     return total
 
 
-def update_con_costs(source, date, profit):
+def update_con_costs(source, date, gross_profit, net_profit):
     """
     updates the cons sheet with all costs incurred and uses
     these to work out the total profit
@@ -315,9 +319,9 @@ def update_con_costs(source, date, profit):
         total_costs = 0
         for ind in range(2, len(output)):
             total_costs = total_costs + int(output[ind])
-        net_profit = profit - total_costs
         output.append(total_costs)
-        output.append(net_profit)
+        output.append(total_profit(gross_profit))
+        output.append(total_profit(net_profit) - total_costs)
         if confirm_choice(
             f"You are updating the sales for {source} convention.\n"
             f"Table costs are £{output[3]}\n"
@@ -478,14 +482,14 @@ def populate_comic_list():
     print("Application data loaded.")
 
 
-def get_profit_per_sale():
+def get_book_info(key):
     """
-    generates an array with the profit per sale for each book.
+    generates an array from comics dictionary based on key.
     """
-    profit_list = []
+    value_list = []
     for ind in comics:
-        profit_list.append(ind.get("profit per sale"))
-    return profit_list
+        value_list.append(ind.get(key))
+    return value_list
 
 
 def main():
