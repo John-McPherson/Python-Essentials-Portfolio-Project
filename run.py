@@ -205,7 +205,7 @@ def run_again():
 
 def recalculate_cpu(sheet):
     """
-    Reworks out the average CPU
+    Works out the average CPU
     """
     print("Recalculating cost per unit...")
     worksheet = SHEET.worksheet(sheet).col_values(4)
@@ -475,7 +475,7 @@ def populate_comic_list():
         price = SHEET.worksheet("price")
         book[keys[0]] = titles[ind]
         book[keys[1]] = float(price.get_all_values()[counter][1])
-        book[keys[2]] = float(stock.col_values(4)[-1])
+        book[keys[2]] = recalculate_cpu(titles[ind])
         book[keys[3]] = book[keys[1]] - book[keys[2]]
         counter += 1
         comics.append(book.copy())
