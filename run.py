@@ -318,8 +318,8 @@ def update_con_costs(source, date, profit):
         for ind in range(2, len(output)):
             total_costs = total_costs + int(output[ind])
         net_profit = profit - total_costs
-        output.append(net_profit)
         output.append(total_costs)
+        output.append(net_profit)
         if confirm_choice(
             f"You are updating the sales for {source} convention.\n"
             f"Table costs are £{output[3]}\n"
