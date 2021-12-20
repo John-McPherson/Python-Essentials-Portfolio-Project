@@ -1,4 +1,6 @@
+import datetime
 import gspread
+
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -60,8 +62,8 @@ def select_book():
         books.append("Add new book")
         i = 1
         print("which book would you like to update?")
-        for x in books:
-            print(f"{i}. {x}")
+        for title in books:
+            print(f"{i}. {title}")
             i = i + 1
         book = (
             int(input(f"Please enter a number between 1 and {len(books)}\n"))
@@ -108,8 +110,8 @@ def restock_book(book, index):
                 break
         stock.append(round(int(stock[1]) / int(stock[0]), 2))
         if confirm_choice(
-            f"On {stock[2]}, you ordered {stock[0]} copies of {book} for £{stock[1]} "
-            f"which works out at cpu £{stock[3]}"
+            f"On {stock[2]}, you ordered {stock[0]} copies of {book} "
+            f"for £{stock[1]} which works out at cpu £{stock[3]}"
         ):
             print("updating stock")
             break
@@ -127,20 +129,20 @@ def update_stock_levels(stock_data):
     books = stock.get_all_values()
     new_stock_level = []
     col = 65
-    x = 0
+    counter = 0
 
     for ind in books[-1]:
-        restock = int(ind) - int(stock_data[x])
+        restock = int(ind) - int(stock_data[counter])
         if restock < 50:
-            order_prompt(books[0][x], x)
+            order_prompt(books[0][counter], counter)
             stock = SHEET.worksheet("stock")
             restock = stock.acell(chr(col) + "2").value
-        x += 1
+        counter += 1
         col += 1
         new_stock_level.append(restock)
     col = 65
-    for x in new_stock_level:
-        stock.update(chr(col) + "2", x)
+    for cell_number in new_stock_level:
+        stock.update(chr(col) + "2", cell_number)
         col += 1
     print("Total stock levels updated...")
 
@@ -246,7 +248,7 @@ def update_sales(source):
     output = [source]
     profit = []
     profit_per_sale = get_profit_per_sale()
-    y = 0
+    counter = 0
     while True:
         date = input("Please enter the date of sale\n")
         if validate_date(date):
@@ -254,11 +256,11 @@ def update_sales(source):
             break
     for ind in range(2, len(sales_sheet[0])):
         while True:
-            x = input(f"Enter sale numbers for {books[ind]}\n")
-            if validate_input(x):
-                profit.append(int(x) * float(profit_per_sale[y]))
-                output.append(x)
-                y += 1
+            choice = input(f"Enter sale numbers for {books[ind]}\n")
+            if validate_input(choice):
+                profit.append(int(choice) * float(profit_per_sale[counter]))
+                output.append(choice)
+                counter += 1
                 break
     update_sheet(output, "sales")
     update_stock_levels(output[2:None])
@@ -334,7 +336,7 @@ comics = []
 def validate_book_title(comic_title):
     """
     Checks to ensure that when adding a book title
-    it is not already in use/.
+    it is not already in use.
     """
     titles = []
     book_exists = False
@@ -392,8 +394,8 @@ def validate_input(user_input):
     """
     try:
         float(user_input)
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again\n")
+    except ValueError as event:
+        print(f"Invalid data: {event}, please try again\n")
         return False
     return True
 
@@ -403,18 +405,18 @@ def validate_date(user_input):
     Checks the user input and confirms that the input is the a valid date.
     """
     date = str(user_input).split("/")
+
     try:
         if len(date) != 3:
             raise ValueError(
                 "The date inputed is incorrect.\
                  Please provide date in the following format dd/mm/yyyy"
             )
-        import datetime
 
         date = datetime.datetime(int(date[2]), int(date[1]), int(date[0]))
 
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again\n")
+    except ValueError as event:
+        print(f"Invalid data: {event}, please try again\n")
         return False
     return True
 
@@ -446,9 +448,9 @@ def update_price(title, price):
     updates the price of a new book onto the price worksheet
     """
     pricework = SHEET.worksheet("price")
-    y = len(pricework.get_all_values()) + 1
-    title_cell = "A" + str(y)
-    price_cell = "B" + str(y)
+    cell_number = len(pricework.get_all_values()) + 1
+    title_cell = "A" + str(cell_number)
+    price_cell = "B" + str(cell_number)
     pricework.update(title_cell, title)
     pricework.update(price_cell, price)
 
@@ -461,15 +463,15 @@ def populate_comic_list():
     keys = ["title", "sale price", "cpu", "profit per sale"]
     book = {}
     titles = data[0]
-    x = 0
+    counter = 0
     for ind in range(2, len(titles)):
         stock = SHEET.worksheet(titles[ind])
         price = SHEET.worksheet("price")
         book[keys[0]] = titles[ind]
-        book[keys[1]] = float(price.get_all_values()[x][1])
+        book[keys[1]] = float(price.get_all_values()[counter][1])
         book[keys[2]] = float(stock.col_values(4)[-1])
         book[keys[3]] = book[keys[1]] - book[keys[2]]
-        x += 1
+        counter += 1
         comics.append(book.copy())
     print("Application data loaded.")
 
