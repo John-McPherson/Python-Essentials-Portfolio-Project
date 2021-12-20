@@ -320,7 +320,8 @@ def update_con_costs(source, date, profit):
         output.append(total_costs)
         if confirm_choice(
             f"You are updating the sales for {source} convention.\n"
-            f"Table costs are £{output[3]} \n Travel costs are £{output[4]}\n"
+            f"Table costs are £{output[3]}\n"
+            f"Travel costs are £{output[4]}\n"
             f"Misc costs are £{output[5]}\n"
         ):
             update_sheet(output, "cons")
