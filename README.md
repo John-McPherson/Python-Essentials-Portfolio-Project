@@ -140,6 +140,10 @@ Before starting on the project, I created a mock up using lucid chart to break d
 * Google Docs
 * Google Sheets
 
+## **Deployment**
+
+The site is deployed via Heroku.
+
 ### **Content**
 
 ## **Credits**
