@@ -449,7 +449,6 @@ def update_headers(title):
         num = len(stock.get_all_values()[0])
     except IndexError:
         num = 0
-    print(f"test: {num}")
     stock_row = chr(num + 65) + "1"
     sales_row = chr(num + 67) + "1"
     stock.update(stock_row, title)
