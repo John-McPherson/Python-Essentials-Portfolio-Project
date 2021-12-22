@@ -104,7 +104,10 @@ def restock_book(book, index):
                 stock.append(cost)
                 break
         while True:
-            date = input("What is the date of the order?\n")
+            date = input(
+                "What is the date of the order?\n"
+                "Using the DD/MM/YYYY format\n"
+            )
             if validate_date(date):
                 stock.append(date)
                 break
@@ -260,7 +263,9 @@ def update_sales(source):
     sale_price = get_book_info("sale price")
     counter = 0
     while True:
-        date = input("Please enter the date of sale\n")
+        date = input(
+            "Please enter the date of sale\n Using the DD/MM/YYYY format\n"
+        )
         if validate_date(date):
             output.append(date)
             break
