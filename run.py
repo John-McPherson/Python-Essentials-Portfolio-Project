@@ -18,6 +18,11 @@ sales = SHEET.worksheet("sales")
 
 data = sales.get_all_values()
 
+# Array that will be filled with data on initial load to reduce
+# the amount of times the application has to get infomation from
+# google sheets
+comics = []
+
 
 def stock_or_sales():
     """
@@ -335,9 +340,6 @@ def update_con_costs(source, date, gross_profit, net_profit):
             break
 
 
-comics = []
-
-
 def validate_book_title(comic_title):
     """
     Checks to ensure that when adding a book title
@@ -414,8 +416,8 @@ def validate_date(user_input):
     try:
         if len(date) != 3:
             raise ValueError(
-                "The date inputed is incorrect.\
-                 Please provide date in the following format dd/mm/yyyy"
+                "The date inputed is incorrect."
+                "Please provide date in the following format dd/mm/yyyy"
             )
 
         date = datetime.datetime(int(date[2]), int(date[1]), int(date[0]))
