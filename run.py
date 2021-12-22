@@ -130,6 +130,8 @@ def update_stock_levels(stock_data):
     books = stock.get_all_values()
     new_stock_level = []
     col = 65
+    # col is set to 65 as it is used to generate a letter from
+    # a character code to be used to get the correct cell to be updated.
     counter = 0
 
     for ind in books[-1]:
