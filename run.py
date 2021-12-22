@@ -298,7 +298,8 @@ def total_profit(profit_array):
 
 def update_con_costs(source, date, gross_profit, net_profit):
     """
-    Updates the cons sheet with all costs incurred and uses
+    Updates the y
+     sheet with all costs incurred and uses
     these to work out the total profit
     """
     while True:
@@ -517,41 +518,36 @@ def delete_data():
             SHEET.worksheet("stock").clear()
             SHEET.worksheet("sales").clear()
             SHEET.worksheet("cons").clear()
-            add_headers_setup()
+            add_headers_setup(["source", "date"], "sales")
+            add_headers_setup(
+                [
+                    "con",
+                    "date",
+                    "travel",
+                    "parking",
+                    "misc",
+                    "total costs",
+                    "gross profit",
+                    "net profit",
+                ],
+                "cons",
+            )
             print("Data deleted.")
     else:
         run_again()
 
 
-def add_headers_setup():
+def add_headers_setup(headings, worksheet):
     """
     Readds the headers to the con and sales sheets after deletion.
     Called as part of the delete_data function.
     """
-    sales_sheet = SHEET.worksheet("sales")
-    cons_sheet = SHEET.worksheet("cons")
     sales_headings = ["source", "date"]
+    sheet = SHEET.worksheet(worksheet)
     col = 65
     counter = 0
-    cons_headings = [
-        "con",
-        "date",
-        "travel",
-        "parking",
-        "table",
-        "misc",
-        "total costs",
-        "gross profit",
-        "net profit",
-    ]
-    for ind in sales_headings:
-        sales_sheet.update(str(chr(col) + str(1)), ind)
-        counter += 1
-        col += 1
-    col = 65
-    counter = 0
-    for ind in cons_headings:
-        cons_sheet.update(str(chr(col) + str(1)), ind)
+    for ind in headings:
+        sheet.update(str(chr(col) + str(1)), ind)
         counter += 1
         col += 1
 
