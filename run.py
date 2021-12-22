@@ -502,13 +502,22 @@ def get_book_info(key):
     return value_list
 
 
-def main():
+def delete_data():
     """
-    Runs all program functions
+    allows the user to delete all data from the worksheet for testing purposes.
     """
-    populate_comic_list()
-    set_up()
-    run_again()
+    if confirm_choice("You are deleting all data from all sheets."):
+        if confirm_choice("This is irreversable."):
+            print("Deleting data...")
+            titles = get_book_info("title")
+            for title in titles:
+                print(f"deleteing {title}")
+                SHEET.del_worksheet(SHEET.worksheet(title))
+            SHEET.worksheet("price").clear()
+            SHEET.worksheet("stock").clear()
+            print("Data deleted.")
+    else:
+        run_again()
 
 
 def set_up():
@@ -528,4 +537,15 @@ def set_up():
         stock_or_sales()
 
 
-main()
+def main():
+    """
+    Runs all program functions
+    """
+    populate_comic_list()
+    set_up()
+    run_again()
+
+
+# main()
+# populate_comic_list()
+# delete_data()
