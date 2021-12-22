@@ -515,9 +515,45 @@ def delete_data():
                 SHEET.del_worksheet(SHEET.worksheet(title))
             SHEET.worksheet("price").clear()
             SHEET.worksheet("stock").clear()
+            SHEET.worksheet("sales").clear()
+            SHEET.worksheet("cons").clear()
+            add_headers_setup()
             print("Data deleted.")
     else:
         run_again()
+
+
+def add_headers_setup():
+    """
+    Readds the headers to the con and sales sheets after deletion.
+    Called as part of the delete_data function.
+    """
+    sales_sheet = SHEET.worksheet("sales")
+    cons_sheet = SHEET.worksheet("cons")
+    sales_headings = ["source", "date"]
+    col = 65
+    counter = 0
+    cons_headings = [
+        "con",
+        "date",
+        "travel",
+        "parking",
+        "table",
+        "misc",
+        "total costs",
+        "gross profit",
+        "net profit",
+    ]
+    for ind in sales_headings:
+        sales_sheet.update(str(chr(col) + str(1)), ind)
+        counter += 1
+        col += 1
+    col = 65
+    counter = 0
+    for ind in cons_headings:
+        cons_sheet.update(str(chr(col) + str(1)), ind)
+        counter += 1
+        col += 1
 
 
 def set_up():
@@ -548,4 +584,4 @@ def main():
 
 # main()
 # populate_comic_list()
-# delete_data()
+delete_data()
