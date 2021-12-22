@@ -142,7 +142,10 @@ Before starting on the project, I created a mock up using lucid chart to break d
 
 ## **Deployment**
 
-The site is deployed via Heroku.
+The site is deployed via Heroku. To deploy the site please follow the following steps:
+
+1. Go to the [Heroku website](https://heroku.com/) and create an account.
+2. 
 
 ### **Content**
 
