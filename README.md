@@ -1,6 +1,6 @@
 # **Comic Sales tracker**
 
-This project is the third milestone project for the Code Institute Diploma in Full Stack Software Development. You can see the final deployed site [here.](link)
+This project is the third milestone project for the Code Institute Diploma in Full Stack Software Development. You can see the final deployed site [here.](https://comic-stock-tracker.herokuapp.com/)
 
 <!-- ![Site mock-up](link) -->
 
