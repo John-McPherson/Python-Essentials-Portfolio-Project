@@ -2,7 +2,9 @@
 
 This project is the third milestone project for the Code Institute Diploma in Full Stack Software Development. You can see the final deployed site [here.](https://comic-stock-tracker.herokuapp.com/)
 
-<!-- ![Site mock-up](link) -->
+The app is a stock tracker for comic creators that updates a [googlesheet](https://docs.google.com/spreadsheets/d/1rINav1mYdCZ2yVeBe1SFQGd25lQRAO4ZD53dSbDz-c0/edit#gid=1975812065) with upto date sales infomation. 
+
+![Site mock-up](./assets/imgs/site-mock-up.png)
 
 ## **Contents**
 * [UX](#ux)
