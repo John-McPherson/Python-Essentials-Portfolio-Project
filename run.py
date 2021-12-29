@@ -38,7 +38,10 @@ def stock_or_sales():
             if confirm_choice(f"You chose {choice}."):
                 select_book()
                 break
-
+        elif choice == "delete":
+            if confirm_choice(f"You chose {choice}."):
+                delete_data()
+                break
         else:
             print("You have made an incorrect selection. Please try again")
 
@@ -298,8 +301,7 @@ def total_profit(profit_array):
 
 def update_con_costs(source, date, gross_profit, net_profit):
     """
-    Updates the y
-     sheet with all costs incurred and uses
+    Updates the cons sheet with all costs incurred and uses
     these to work out the total profit
     """
     while True:
@@ -542,7 +544,7 @@ def add_headers_setup(headings, worksheet):
     Readds the headers to the con and sales sheets after deletion.
     Called as part of the delete_data function.
     """
-    sales_headings = ["source", "date"]
+    # sales_headings = ["source", "date"]
     sheet = SHEET.worksheet(worksheet)
     col = 65
     counter = 0
@@ -578,6 +580,5 @@ def main():
     run_again()
 
 
-# main()
+main()
 # populate_comic_list()
-delete_data()
