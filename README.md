@@ -31,6 +31,7 @@ This project is the third milestone project for the Code Institute Diploma in Fu
     * [Version Control](#version-control)
     * [Python Packages](#python-packages)
     * [Other Software](#other-software)
+* [Deployment](#deployment)
 * [Credits](#credits)
     * [Content](#content)
     * [Acknowledgements](#acknowledgements)
@@ -150,12 +151,69 @@ Before starting on the project, I created a mock up using lucid chart to break d
 
 The site is deployed via Heroku. To deploy the site please follow the following steps:
 
-1. Go to the [Heroku website](https://heroku.com/) and create an account.
-2. 
+1. Go to the [Heroku website](https://heroku.com/) and log in to your account. If you have not made one yet first create an account.
 
-### **Content**
+2. On the home page click the new button and then click create new app. 
+
+![Deployment step 1](./assets/imgs/deployment-1.png) 
+
+3. On the next page enter a name for the app. This has to be unnique. You cannot use the same name as I have. Then enter your location before clicking create app. 
+
+![Deployment step 2](./assets/imgs/deployment-2.png) 
+
+4. Click on the settings tab. 
+
+![Deployment step 3](./assets/imgs/deployment-3.png) 
+
+5. Click on reveal config vars. 
+
+![Deployment step 4](./assets/imgs/deployment-4.png) 
+
+6. In the key field type PORT and in the value field type 8000. Then click add. 
+
+![Deployment step 5](./assets/imgs/deployment-5.png) 
+
+7. In the key field type CREDS and in the value field copy and paste the data from your creds.json file. 
+
+![Deployment step 6](./assets/imgs/deployment-6.png) 
+
+8. Click add build pack. 
+
+![Deployment step 7](./assets/imgs/deployment-7.png) 
+
+9. Select Python and then click save changes. 
+
+![Deployment step 8](./assets/imgs/deployment-8.png) 
+
+10. Click add build pack again. Then select Node.js and click save changes. 
+
+![Deployment step 9](./assets/imgs/deployment-9.png) 
+
+11. Make sure that python is at the top of the list. If Node.js is at the top drag and drop to reorder. 
+
+![Deployment step 10](./assets/imgs/deployment-10.png) 
+
+12. Click on the deploy tab. 
+
+![Deployment step 11](./assets/imgs/deployment-11.png) 
+
+13. Select Github in the deployment method section and enter the name of the repo in the search bar. Click search and then click connect. 
+
+![Deployment step 12](./assets/imgs/deployment-12.png) 
+14. Scroll down to Automatic deploys section and click on enable automatic deployment. 
+
+![Deployment step 13](./assets/imgs/deployment-13.png) 
+
+15. Scroll up and click on open app. It may take sometime for the deployment to be completed. 
+
+![Deployment step 14](./assets/imgs/deployment-14.png) 
+
+
+
 
 ## **Credits**
+
+### **Content**
 
 All code was written by me with the following exceptions; 
 
