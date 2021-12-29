@@ -113,6 +113,12 @@ Before starting on the project, I created a mock up using lucid chart to break d
  ### **Set Up**
  * If there are no books inputed in the spreadsheet the program will run a set up function prompting the user to add their comics to the program. 
 
+ ### **Delete data*** 
+ * The application has the option to clear all user inputs to help with testing or to allow the user to start again with a blank spreadsheet. 
+ * The delete function is hidden from the user to reduce the chance that they would accidentally run it and lose all their data. 
+ * To access the delete function the user types "delete" when prompted to choose between updating stock and sales. As this is irreversable it will warn the user that deleting the data will be permanent and will ask for confirmation three times before clearing the data. 
+
+
  ## **Features left to implement**
 
 ### **Automatic Reordering** 
