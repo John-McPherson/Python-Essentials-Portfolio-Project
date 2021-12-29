@@ -81,8 +81,15 @@ def select_book():
                 restock_book(books[book], book)
                 break
             else:
-                add_book(book)
-                break
+                if len(books) <= 6:
+                    add_book(book)
+                    break
+                else:
+                    print(
+                        "Unforunatly the comics stock tracker cannot support"
+                        "more than 6 books\n"
+                    )
+                    break
         print(
             f"Incorrect data. Please enter a number between 1 and {len(books)}\
             \n"
