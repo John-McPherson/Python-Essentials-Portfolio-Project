@@ -107,12 +107,12 @@ def restock_book(book, index):
         stock = []
         while True:
             restock = input("How much stock have you ordered?\n")
-            if validate_input(restock, True):
+            if validate_input(restock, True, "int"):
                 stock.append(restock)
                 break
         while True:
             cost = input("How much did the restock cost?\n")
-            if validate_input(cost, True):
+            if validate_input(cost, True, "int"):
                 stock.append(cost)
                 break
         while True:
@@ -286,7 +286,7 @@ def update_sales(source):
         for ind in range(2, len(sales_sheet[0])):
             while True:
                 choice = input(f"Enter sale numbers for {books[ind]}\n")
-                if validate_input(choice, False):
+                if validate_input(choice, False, "int"):
                     gross_profit.append(
                         int(choice) * float(sale_price[counter])
                     )
@@ -335,28 +335,28 @@ def update_con_costs(source, date, gross_profit, net_profit):
             table_costs = input(
                 f"Please enter the table costs for {source} convention\n"
             )
-            if validate_input(table_costs, False):
+            if validate_input(table_costs, False, "float"):
                 output.append(table_costs)
                 break
         while True:
             travel_costs = input(
                 f"Please enter the travel costs for {source} convention\n"
             )
-            if validate_input(travel_costs, False):
+            if validate_input(travel_costs, False, "float"):
                 output.append(travel_costs)
                 break
         while True:
             parking_costs = input(
                 f"Please enter the parking costs for {source} convention\n"
             )
-            if validate_input(parking_costs, False):
+            if validate_input(parking_costs, False, "float"):
                 output.append(parking_costs)
                 break
         while True:
             misc_costs = input(
                 f"Please enter any misc costs for {source} convention\n"
             )
-            if validate_input(misc_costs, False):
+            if validate_input(misc_costs, False, "float"):
                 output.append(misc_costs)
                 break
         total_costs = 0
@@ -422,7 +422,7 @@ def add_book(index):
             break
     while True:
         price = input("What is the sale price of the book?\n")
-        if validate_input(price, True):
+        if validate_input(price, True, "float"):
             book[keys[0]] = title
             book[keys[1]] = price
             book[keys[2]] = 0
@@ -435,7 +435,7 @@ def add_book(index):
     restock_book(title, index)
 
 
-def validate_input(user_input, not_zero):
+def validate_input(user_input, not_zero, number_type):
     """
     Checks the user input and confirms that the
     input is the expected data type.
@@ -448,9 +448,15 @@ def validate_input(user_input, not_zero):
             )
             return False
     try:
-        float(user_input)
+        if number_type == "int":
+            num = "whole number"
+            int(user_input)
+        else:
+            num = "number"
+            float(user_input)
+
     except ValueError as event:
-        print(f"Invalid data: {event}, please enter a number and try again\n")
+        print(f"Invalid data: {event}, please enter a {num} and try again\n")
         return False
     return True
 
