@@ -532,6 +532,7 @@ def delete_data():
                 [
                     "con",
                     "date",
+                    "table",
                     "travel",
                     "parking",
                     "misc",
