@@ -441,7 +441,7 @@ def validate_input(user_input):
     try:
         float(user_input)
     except ValueError as event:
-        print(f"Invalid data: {event}, please try again\n")
+        print(f"Invalid data: {event}, please enter a number and try again\n")
         return False
     return True
 
