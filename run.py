@@ -50,7 +50,7 @@ def confirm_choice(choice):
     """
     Prompts the user to confirm their choice.
     """
-    confirm = input(f"{choice} is that correct? y/n\n")
+    confirm = input(f"{choice} Is that correct? y/n\n")
     if confirm == "y":
         return True
     elif confirm == "n":
@@ -126,7 +126,6 @@ def restock_book(book, index):
             f"On {stock[2]}, you ordered {stock[0]} copies of {book} "
             f"for £{stock[1]} which works out at cpu £{stock[3]}"
         ):
-            print("Updated stock")
             break
     update_sheet(stock, book)
     update_cpu_on_restock(index, book)
@@ -202,7 +201,7 @@ def update_sheet(update_data, sheet):
     print(f"Updating {sheet} worksheet...")
     worksheet = SHEET.worksheet(sheet)
     worksheet.append_row(update_data)
-    print(f"{sheet} worksheet updated successfully.\n")
+    print(f"{sheet.capitalize()} worksheet updated successfully.\n")
 
 
 def run_again():
@@ -274,7 +273,7 @@ def update_sales(source):
     counter = 0
     while True:
         date = input(
-            "Please enter the date of sale\n Using the DD/MM/YYYY format\n"
+            "Please enter the date of sale\n" "Using the DD/MM/YYYY format\n"
         )
         if validate_date(date):
             output.append(date)
@@ -589,4 +588,3 @@ def main():
 
 
 main()
-# populate_comic_list()
