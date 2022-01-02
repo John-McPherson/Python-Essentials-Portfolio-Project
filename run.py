@@ -54,10 +54,8 @@ def confirm_choice(choice):
         confirm = input(f"{choice}Is that correct? y/n\n")
         if confirm == "y":
             return True
-            break
         elif confirm == "n":
             return False
-            break
         else:
             print("You have made an incorrect selection. Please try again")
 
@@ -440,6 +438,11 @@ def validate_input(user_input):
     Checks the user input and confirms that the
     input is the expected data type.
     """
+    if user_input == "0":
+        print(
+            "Invalid data please enter a number higher than 0 and try again\n"
+        )
+        return False
     try:
         float(user_input)
     except ValueError as event:
