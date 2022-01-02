@@ -72,10 +72,10 @@ def select_book():
         for title in books:
             print(f"{i}. {title}")
             i = i + 1
-        book = (
-            int(input(f"Please enter a number between 1 and {len(books)}\n"))
-            - 1
+        book = int(
+            input(f"Please enter a number between 1 and {len(books)}\n")
         )
+        book -= 1
         if book <= len(books):
             if book != len(books) - 1:
                 restock_book(books[book], book)
