@@ -12,6 +12,7 @@ It will then ask you to confirm your choice three times. Then it will clear the 
 * [Validation](#Validation)
 * [Functionality Testing](#functionality-testing)
     * [User Story Evaluation](#user-story-valuation)
+* [Bug Fixes](#bug-fixes)
 
 ## **Validation**
 I ran my code through the [pep8online linter](http://pep8online.com/) to check for errors. The original code came back with the following errors;
@@ -91,5 +92,24 @@ After running the program through the linter I manually checked to ensure that a
 
 My intial run through revealed that the delete function was not adding the correct headings in the con sheet which was making the data difficult to parse. This was fixed in commit [0d61bf](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/0d61bf9df038751700188dcce306495a8d868886#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
 
+## **Bug Fixes**
 
+1. The wrong function was called to update the cost per unit whenever stock levels were updated. This was causing issues with the calculations and caused incorrect data to pushed to the google sheet. This was fixed in commit [e5b10f9](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/e5b10f9722dc373dd86bb3937275b0badd991a95#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
 
+2. The recalculate_cpu function was returning it's value as an unweildy integer. I added a round function so that the data that it returned was more readable. Fixed in commit [d3e251](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/d3e25141fd14017182a28fb1b292dd572850d3fc#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
+
+3. The gross profit was being miscalculated. This was fixed in commit [877dd5](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/877dd5ab14d9329f251e99daa778dead32e1952a#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
+
+4. The program would crash whenever there was no data being provided to the update_header function. This was fixed in commit [d48f68](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/d48f68d2ca953a7a1b6d7500d15e52eb84b60953#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
+
+5. The gross and net profit was being updated in the wrong section. This was fixed in commit [a45241](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/a452412f3ea9cdcc13c0f462a13e0032b7e2e5ed#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
+
+6. When reordering stock due to low stock levels the new data was being overwritten with the old code meaning the stock tracker was not working. This was fixed in commit [dda9e2](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/dda9e260ea8d7564a28b1a7330e6475ca6c4b13b#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0), [d42bf4](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/d42bf429a0e0bef0ca132a47ae3252a01fb905fd#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0), and [ 6be11a](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/6be11a23482554e768d6f98d5e33b596d8f4ad46#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0)
+
+7. The populate comic list was updating the price with the value of the original book. This was fixed in commit [a8decb](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/a8decb26d14efc6fd7baacc71cc96229aa0d2828).
+
+8. The populate comics list function was pulling the data from the wrong sheet. This was fixed in commit  [5f71f3](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/5f71f3393348019ea18c6daf34327832221fc7ea#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
+
+9. The validata_date function was transposing the day and the month causing correct inputs to not pass through the validation. This was fixed in commit [8a8eaa](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/8a8eaa8a73e061017a6cc787d975102c9d1acfcb).
+
+10. The select book function was not displaying the list of books to choose from. This was fixed in commit [560e88](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/560e88290ae7864b0d3b6b3951e2ee109384cae8).
