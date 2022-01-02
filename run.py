@@ -31,15 +31,15 @@ def stock_or_sales():
     while True:
         choice = input("Would you like to input stock or sales?\n").lower()
         if choice == "sales":
-            if confirm_choice(f"You chose {choice}."):
+            if confirm_choice(f"You chose {choice}. "):
                 select_con_or_online()
                 break
         elif choice == "stock":
-            if confirm_choice(f"You chose {choice}."):
+            if confirm_choice(f"You chose {choice}. "):
                 select_book()
                 break
         elif choice == "delete":
-            if confirm_choice(f"You chose {choice}."):
+            if confirm_choice(f"You chose {choice}. "):
                 delete_data()
                 break
         else:
@@ -50,7 +50,7 @@ def confirm_choice(choice):
     """
     Prompts the user to confirm their choice.
     """
-    confirm = input(f"{choice} Is that correct? y/n\n")
+    confirm = input(f"{choice}Is that correct? y/n\n")
     if confirm == "y":
         return True
     elif confirm == "n":
@@ -123,8 +123,8 @@ def restock_book(book, index):
                 break
         stock.append(round(int(stock[1]) / int(stock[0]), 2))
         if confirm_choice(
-            f"On {stock[2]}, you ordered {stock[0]} copies of {book} "
-            f"for £{stock[1]} which works out at cpu £{stock[3]}"
+            f"On {stock[2]}, you ordered {stock[0]} copies of {book}\n"
+            f"For £{stock[1]} which works out at cpu £{stock[3]}\n"
         ):
             break
     update_sheet(stock, book)
@@ -247,11 +247,11 @@ def select_con_or_online():
     while True:
         source = input("Are you updating online or convention sales?\n")
         if source == "online":
-            if confirm_choice(f"You are updating {source} sales."):
+            if confirm_choice(f"You are updating {source} sales. "):
                 update_sales(source)
                 break
         elif source == "convention":
-            if confirm_choice(f"You are updating {source} sales."):
+            if confirm_choice(f"You are updating {source} sales. "):
                 convention = input("Which convention are you updating?\n")
                 update_sales(convention)
                 break
@@ -538,8 +538,8 @@ def delete_data():
     """
     allows the user to delete all data from the worksheet for testing purposes.
     """
-    if confirm_choice("You are deleting all data from all sheets."):
-        if confirm_choice("This is irreversable."):
+    if confirm_choice("You are deleting all data from all sheets. "):
+        if confirm_choice("This is irreversable. "):
             print("Deleting data...")
             titles = get_book_info("title")
             for title in titles:
