@@ -50,14 +50,16 @@ def confirm_choice(choice):
     """
     Prompts the user to confirm their choice.
     """
-    confirm = input(f"{choice}Is that correct? y/n\n")
-    if confirm == "y":
-        return True
-    elif confirm == "n":
-        return False
-    else:
-        print("You have made an incorrect selection. Please try again")
-        confirm_choice(choice)
+    while True:
+        confirm = input(f"{choice}Is that correct? y/n\n")
+        if confirm == "y":
+            return True
+            break
+        elif confirm == "n":
+            return False
+            break
+        else:
+            print("You have made an incorrect selection. Please try again")
 
 
 def select_book():
