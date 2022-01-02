@@ -16,7 +16,7 @@ These were fixed in commit [1ef6d64](https://github.com/John-McPherson/Python-Es
 ## **Functionality Testing**
 * [User Story Evaluation](#user-story-valuation)
 * [Additional User Stories](#additional-user-stories)
-* [manual](#manual-testing)
+* [Manual Testing](#manual-testing)
 
 ### **User Story Evaluation**
 
@@ -75,4 +75,6 @@ During development it became clear that from a UX pov that I needed to add the f
 * If the program is run without any data it will run a set up function to ensure that all the functions run correctly. 
 
 **After excuting the delete function the next time the program runs it will run a set up function. This prevents the user from updating sales when there is nothing to update.**
+
+### **Manual Testing**
 
