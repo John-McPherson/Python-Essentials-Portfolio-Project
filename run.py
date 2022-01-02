@@ -41,6 +41,8 @@ def stock_or_sales():
         elif choice == "delete":
             if confirm_choice(f"You chose {choice}. "):
                 delete_data()
+                global comics
+                comics = []
                 break
         else:
             print("You have made an incorrect selection. Please try again")
@@ -211,7 +213,7 @@ def run_again():
     while True:
         choice = input("Do you want to update another input? y/n \n")
         if choice == "y":
-            stock_or_sales()
+            set_up()
         elif choice == "n":
             print("Thank you for using the comic stock tracker.")
             break
@@ -572,8 +574,6 @@ def delete_data():
                 "cons",
             )
             print("Data deleted.")
-    else:
-        run_again()
 
 
 def add_headers_setup(headings, worksheet):
