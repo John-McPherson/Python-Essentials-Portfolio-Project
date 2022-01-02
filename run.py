@@ -297,7 +297,7 @@ def update_sales(source):
                     break
         if confirm_choice(
             f"You are updating sales for {date} \n"
-            "Sales as follows;" + summary
+            "Sales as follows;\n" + summary
         ):
             update_sheet(output, "sales")
             update_stock_levels(output[2:None])
@@ -442,7 +442,7 @@ def validate_input(user_input, not_zero):
         if user_input == "0":
             print(
                 "Invalid data please enter a number higher than 0"
-                "and try again\n"
+                " and try again\n"
             )
             return False
     try:
