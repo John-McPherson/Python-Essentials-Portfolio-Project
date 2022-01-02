@@ -94,6 +94,82 @@ My intial run through revealed that the delete function was not adding the corre
 
 I then tested the confirm choice function and it was not working as intended. Instead of just rerunning the confirm choice function it would rerun the whole function that called it. That was fixed in commit [c0fa215](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/c0fa215326292c33258c38d1db739cb7fb5240a3). 
 
+I first checked the set up function. It worked as intended. I then checked the intial data validation and that worked as intended;
+
+![Data validation](./assets/imgs/data-validation-1.png)
+
+![Data validation 2](./assets/imgs/data-validation-2.png)
+
+I then tested the date validation process. And that worked as expected. 
+
+![Date validation](./assets/imgs/date-validation-1.png)
+
+![Date validation 2](./assets/imgs/date-validation-2.png)
+
+![Date validation 3](./assets/imgs/date-validation-3.png)
+
+![Date validation 4](./assets/imgs/date-validation-4.png)
+
+I then checked the spreadsheet to check to see if the infomation pulled through and everything was working as intended. 
+
+![New book worksheet](./assets/imgs/new-book-worksheet-1.png)
+
+![New book worksheet](./assets/imgs/new-book-worksheet-2.png)
+
+![New book worksheet](./assets/imgs/new-book-worksheet-3.png)
+
+![New book worksheet](./assets/imgs/new-book-worksheet-4.png)
+
+I then reran the program to see if everything worked as expected. I also tried to input a book with the same title to see if the data validation was working as intended. 
+
+![Same Title](./assets/imgs/same-title.png)
+
+I then checked to see if the stock and sales function was working as intended. The data validation was working as expected. 
+
+![Stock Sales](./assets/imgs/stock-sales.png)
+
+I then checked the online sales function and that worked as expected. 
+
+![Online Sales 1](./assets/imgs/online-sales-1.png)
+
+![Online Sales 2](./assets/imgs/online-sales-2.png)
+
+I entered a input high enough to trigger the auto reorder function and that worked as expected. 
+
+![Auto Reorder](./assets/imgs/auto-reorder-1.png)
+
+Then I checked the con-sales function and that was working as expected. 
+
+![Con Sales 1](./assets/imgs/con-sales-1.png)
+
+![Con Sales 2](./assets/imgs/con-sales-2.png)
+
+![Con Sales 3](./assets/imgs/con-sales-3.png)
+
+I then checked the sheet to see if it had pulled through the infomation as intended and everything had worked okay. 
+
+[Update sheet sales 1](./assets/imgs/update-sheet-sales-1.png)
+
+[Update sheet sales 2](./assets/imgs/update-sheet-sales-2.png)
+
+[Update sheet sales 3](./assets/imgs/update-sheet-sales-3.png)
+
+[Update sheet sales 4](./assets/imgs/update-sheet-sales-4.png)
+
+[Update sheet sales 5](./assets/imgs/update-sheet-sales-5.png)
+
+[Update sheet sales 6](./assets/imgs/update-sheet-sales-6.png)
+
+I then checked to see if stock limit I put in place was working. It was functioning as expected. 
+
+[Stock limit](./assets/imgs/stock-limit-1.png)
+
+Finally I checked the delete function to see if that was working as intended. During testing I discovered that it would let you access the sales function but without any books it would throw up an error. 
+
+[Delete 1](./assets/imgs/delete-func-1.png)
+
+[Delete 2](./assets/imgs/delete-func-2.png)
+
 ## **Bug Fixes**
 
 1. The wrong function was called to update the cost per unit whenever stock levels were updated. This was causing issues with the calculations and caused incorrect data to pushed to the google sheet. This was fixed in commit [e5b10f9](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/e5b10f9722dc373dd86bb3937275b0badd991a95#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
