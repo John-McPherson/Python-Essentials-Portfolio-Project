@@ -201,3 +201,5 @@ This was fixed in commit [633bf1](https://github.com/John-McPherson/Python-Essen
 12. If 0 is entered for price or stock it causes a divde by 0 error. This was fixed in commit [c0fa21](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/c0fa215326292c33258c38d1db739cb7fb5240a3).
 
 13. The delete content function was causing errors when it the run application again choice was made after deleteion. This was fixed in commit [633bf1](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/633bf145635bf83962da59f74fd3cf87e74219f2)
+
+14. Some functions would cause the system to crash when the user inputed a float. This was fixed in commit [ee1c67](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/ee1c6769879fb97fa0e2f3e933e36ca600d0e0ef)
