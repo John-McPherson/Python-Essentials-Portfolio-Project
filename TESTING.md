@@ -14,6 +14,9 @@ These were fixed in commit [1ef6d64](https://github.com/John-McPherson/Python-Es
 ![peponline pass](./assets/imgs/peponline-pass.png)
 
 ## **Functionality Testing**
+* [User Story Evaluation](#user-story-valuation)
+* [Additional User Stories](#additional-user-stories)
+* [manual](#manual-testing)
 
 ### **User Story Evaluation**
 
@@ -55,5 +58,21 @@ Once development was complete I reevaluated my user stories to ensure that I had
 
 **The stock update program has the option to add books to the spreadsheet. This function gets all the infomation required to run the program without requiring the user to have to update any spreadsheets manually** 
 
+### **Additional User Stories**
 
+During development it became clear that from a UX pov that I needed to add the following user stories; 
+
+#### As a user, I expect:
+
+* To be able to clear the google sheet from within the application. 
+
+**While testing the application it quickly became irritating to have to manually delete the data everytime a new feature was added. To avoid this I implemented a function to clear the sheet and start again.**
+
+**To avoid this being accidently being called I made it a hidden function and made it so that the user would have to confirm that they wanted to delete the data three times before deleting the data**
+
+**To access the function when the program asks the user to choose between stock or sales you type "delete" in lowercase.**
+
+* If the program is run without any data it will run a set up function to ensure that all the functions run correctly. 
+
+**After excuting the delete function the next time the program runs it will run a set up function. This prevents the user from updating sales when there is nothing to update.**
 
