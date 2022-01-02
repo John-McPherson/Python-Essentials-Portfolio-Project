@@ -148,31 +148,35 @@ Then I checked the con-sales function and that was working as expected.
 
 I then checked the sheet to see if it had pulled through the infomation as intended and everything had worked okay. 
 
-[Update sheet sales 1](./assets/imgs/update-sheet-sales-1.png)
+![Update sheet sales 1](./assets/imgs/update-sheet-sales-1.png)
 
-[Update sheet sales 2](./assets/imgs/update-sheet-sales-2.png)
+![Update sheet sales 2](./assets/imgs/update-sheet-sales-2.png)
 
-[Update sheet sales 3](./assets/imgs/update-sheet-sales-3.png)
+![Update sheet sales 3](./assets/imgs/update-sheet-sales-3.png)
 
-[Update sheet sales 4](./assets/imgs/update-sheet-sales-4.png)
+![Update sheet sales 4](./assets/imgs/update-sheet-sales-4.png)
 
-[Update sheet sales 5](./assets/imgs/update-sheet-sales-5.png)
+![Update sheet sales 5](./assets/imgs/update-sheet-sales-5.png)
 
-[Update sheet sales 6](./assets/imgs/update-sheet-sales-6.png)
+![Update sheet sales 6](./assets/imgs/update-sheet-sales-6.png)
 
 I then checked to see if stock limit I put in place was working. It was functioning as expected. 
 
-[Stock limit](./assets/imgs/stock-limit-1.png)
+![Stock limit](./assets/imgs/stock-limit-1.png)
 
 Finally I checked the delete function to see if that was working as intended. During testing I discovered that it would let you access the sales function but without any books it would throw up an error. 
 
-[Delete 1](./assets/imgs/delete-func-1.png)
+![Delete 1](./assets/imgs/delete-func-1.png)
 
-[Delete 2](./assets/imgs/delete-func-2.png)
+![Delete 2](./assets/imgs/delete-func-2.png)
 
 This was fixed in commit [633bf1](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/633bf145635bf83962da59f74fd3cf87e74219f2)
 
+![Delete 3](./assets/imgs/delete-func-3.png)
 
+While fixing the delete function issues I discovered a new validation issue with some inputs that required integers rather than floats. This was fixed in commit [ee1c67](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/ee1c6769879fb97fa0e2f3e933e36ca600d0e0ef).
+
+![Data validation](./assets/imgs/data-validation-3.png)
 
 ## **Bug Fixes**
 
@@ -200,6 +204,6 @@ This was fixed in commit [633bf1](https://github.com/John-McPherson/Python-Essen
 
 12. If 0 is entered for price or stock it causes a divde by 0 error. This was fixed in commit [c0fa21](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/c0fa215326292c33258c38d1db739cb7fb5240a3).
 
-13. The delete content function was causing errors when it the run application again choice was made after deleteion. This was fixed in commit [633bf1](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/633bf145635bf83962da59f74fd3cf87e74219f2)
+13. The delete content function was causing errors when it the run application again choice was made after deleteion. This was fixed in commit [633bf1](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/633bf145635bf83962da59f74fd3cf87e74219f2).
 
-14. Some functions would cause the system to crash when the user inputed a float. This was fixed in commit [ee1c67](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/ee1c6769879fb97fa0e2f3e933e36ca600d0e0ef)
+14. Some functions would cause the system to crash when the user inputed a float. This was fixed in commit [ee1c67](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/ee1c6769879fb97fa0e2f3e933e36ca600d0e0ef).
