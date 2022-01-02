@@ -265,34 +265,45 @@ def update_sales(source):
     """
     sales_sheet = SHEET.worksheet("sales").get_all_values()
     books = sales_sheet[0]
-    output = [source]
-    gross_profit = []
-    net_profit = []
     profit_per_sale = get_book_info("profit per sale")
     sale_price = get_book_info("sale price")
-    counter = 0
     while True:
-        date = input(
-            "Please enter the date of sale\n" "Using the DD/MM/YYYY format\n"
-        )
-        if validate_date(date):
-            output.append(date)
-            break
-    for ind in range(2, len(sales_sheet[0])):
+        output = [source]
+        gross_profit = []
+        net_profit = []
+        summary = ""
+        counter = 0
         while True:
-            choice = input(f"Enter sale numbers for {books[ind]}\n")
-            if validate_input(choice):
-                gross_profit.append(int(choice) * float(sale_price[counter]))
-                net_profit.append(
-                    int(choice) * float(profit_per_sale[counter])
-                )
-                output.append(choice)
-                counter += 1
+            date = input(
+                "Please enter the date of sale\n"
+                "Using the DD/MM/YYYY format\n"
+            )
+            if validate_date(date):
+                output.append(date)
                 break
-    update_sheet(output, "sales")
-    update_stock_levels(output[2:None])
-    if source != "online":
-        update_con_costs(source, date, gross_profit, net_profit)
+        for ind in range(2, len(sales_sheet[0])):
+            while True:
+                choice = input(f"Enter sale numbers for {books[ind]}\n")
+                if validate_input(choice):
+                    gross_profit.append(
+                        int(choice) * float(sale_price[counter])
+                    )
+                    net_profit.append(
+                        int(choice) * float(profit_per_sale[counter])
+                    )
+                    output.append(choice)
+                    summary += f"Sales for {books[ind]} are {choice}\n"
+                    counter += 1
+                    break
+        if confirm_choice(
+            f"You are updating sales for {date} \n"
+            f"Sales were as follows:\n" + summary
+        ):
+            update_sheet(output, "sales")
+            update_stock_levels(output[2:None])
+            if source != "online":
+                update_con_costs(source, date, gross_profit, net_profit)
+            break
 
 
 def total_profit(profit_array):
