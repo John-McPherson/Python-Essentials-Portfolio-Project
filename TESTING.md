@@ -87,5 +87,9 @@ During development it became clear that from a UX pov that I needed to add the f
 
 ### **Manual Testing**
 
+After running the program through the linter I manually checked to ensure that all functions and validation was working as intended. 
+
+My intial run through revealed that the delete function was not adding the correct headings in the con sheet which was making the data difficult to parse. This was fixed in commit [0d61bf](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/0d61bf9df038751700188dcce306495a8d868886#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
+
 
 
