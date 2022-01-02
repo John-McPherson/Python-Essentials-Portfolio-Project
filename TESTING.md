@@ -92,7 +92,7 @@ After running the program through the linter I manually checked to ensure that a
 
 My intial run through revealed that the delete function was not adding the correct headings in the con sheet which was making the data difficult to parse. This was fixed in commit [0d61bf](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/0d61bf9df038751700188dcce306495a8d868886#diff-d6af0459a37d985953d7040c14f53feb3b9cc9e58b543aa3c2b80256d276c5e0).
 
-
+I then tested the confirm choice function and it was not working as intended. Instead of just rerunning the confirm choice function it would rerun the whole function that called it. That was fixed in commit [c0fa215](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/c0fa215326292c33258c38d1db739cb7fb5240a3). 
 
 ## **Bug Fixes**
 
@@ -115,3 +115,5 @@ My intial run through revealed that the delete function was not adding the corre
 9. The validata_date function was transposing the day and the month causing correct inputs to not pass through the validation. This was fixed in commit [8a8eaa](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/8a8eaa8a73e061017a6cc787d975102c9d1acfcb).
 
 10. The select book function was not displaying the list of books to choose from. This was fixed in commit [560e88](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/560e88290ae7864b0d3b6b3951e2ee109384cae8).
+
+11. The confirm choice function was not working as intended. Instead of just rerunning the confirm choice function it would rerun the whole function that called it. That was fixed in commit [c0fa215](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/c0fa215326292c33258c38d1db739cb7fb5240a3). 
