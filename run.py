@@ -292,17 +292,23 @@ def update_sales(source):
                         int(choice) * float(profit_per_sale[counter])
                     )
                     output.append(choice)
-                    summary += f"Sales for {books[ind]} are {choice}\n"
+                    summary += f"{choice} copies of {books[ind]}\n"
                     counter += 1
                     break
         if confirm_choice(
             f"You are updating sales for {date} \n"
-            f"Sales were as follows:\n" + summary
+            "Sales as follows;" + summary
         ):
             update_sheet(output, "sales")
             update_stock_levels(output[2:None])
             if source != "online":
                 update_con_costs(source, date, gross_profit, net_profit)
+            else:
+                print(
+                    "Online Sales Report:\n"
+                    f"Gross profit is £{total_profit(gross_profit)}\n"
+                    f"Net profit is £{total_profit(net_profit)}\n"
+                )
             break
 
 
