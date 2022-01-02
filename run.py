@@ -352,6 +352,12 @@ def update_con_costs(source, date, gross_profit, net_profit):
             f"Travel costs are £{output[4]}\n"
             f"Misc costs are £{output[5]}\n"
         ):
+            print(
+                f"Sales report for {source} convention\n"
+                f"Total costs are £{total_costs}\n"
+                f"Gross profit is £{total_profit(gross_profit)}\n"
+                f"Net profit is £{total_profit(net_profit) - total_costs}\n"
+            )
             update_sheet(output, "cons")
             break
 
