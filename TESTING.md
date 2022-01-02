@@ -1,5 +1,14 @@
 # **Testing** 
 
+### **Note When Testing**
+To test all functions you may need to delete the data in the google sheet. To do this when the program prompts you to choose between stock or sales type "delete" all in lower case. 
+
+![Delete step 1](./assets/imgs/delete-1.png)
+
+It will then ask you to confirm your choice three times. Then it will clear the sheet. If it has been preformed correctly it will look like this;
+
+![Delete step 2](./assets/imgs/delete-2.png)
+
 * [Validation](#Validation)
 * [Functionality Testing](#functionality-testing)
     * [User Story Evaluation](#user-story-valuation)
@@ -77,4 +86,6 @@ During development it became clear that from a UX pov that I needed to add the f
 **After excuting the delete function the next time the program runs it will run a set up function. This prevents the user from updating sales when there is nothing to update.**
 
 ### **Manual Testing**
+
+
 
