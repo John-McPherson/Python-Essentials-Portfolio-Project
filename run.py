@@ -436,9 +436,6 @@ def add_book(index):
             book[keys[3]] = float(book[keys[1]]) - book[keys[2]]
             break
     comics.append(book)
-    # new_spreadsheet(title)
-    # update_headers(title)
-    # update_price(title, price)
     restock_book(title, index, price)
 
 
