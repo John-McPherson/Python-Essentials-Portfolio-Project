@@ -207,3 +207,5 @@ While fixing the delete function issues I discovered a new validation issue with
 13. The delete content function was causing errors when it the run application again choice was made after deletion. This was fixed in commit [633bf1](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/633bf145635bf83962da59f74fd3cf87e74219f2).
 
 14. Some functions would cause the system to crash when the user inputted a float. This was fixed in commit [ee1c67](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/ee1c6769879fb97fa0e2f3e933e36ca600d0e0ef).
+
+15. If the user quit between the add book function and restock function when the application was run again it would throw up a divide by zero error and quit the application. This meant that the user would then have to manually delete the data from the google sheet to allow the application to work again. This was fixed in commit [338b5c](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/338b5c80fdf19f0e45f36e857a9ebdfdc8fc67ba).
