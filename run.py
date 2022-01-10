@@ -80,7 +80,7 @@ def select_book():
         book -= 1
         if book <= len(books):
             if book != len(books) - 1:
-                restock_book(books[book], book)
+                restock_book(books[book], book, 0)
                 break
             else:
                 if len(books) <= 6:
@@ -98,7 +98,7 @@ def select_book():
         )
 
 
-def restock_book(book, index):
+def restock_book(book, index, price):
     """
     Allows the user to update stock levels of all comic books.
     """
@@ -129,6 +129,13 @@ def restock_book(book, index):
             f"For £{stock[1]} which works out at cpu £{stock[3]}\n"
         ):
             break
+    try:
+        print(SHEET.worksheet(sheet))
+    except NameError:
+        new_spreadsheet(book)
+        update_headers(book)
+        update_price(book, price)
+
     update_sheet(stock, book)
     update_cpu_on_restock(index, book)
     update_stock_restock(restock, index)
@@ -173,7 +180,7 @@ def order_prompt(book, index):
             f"Stock level of {book} is low.\n Would you like to restock? y/n\n"
         )
         if choice == "y":
-            restock_book(book, index)
+            restock_book(book, index, 0)
             break
         elif choice == "n":
             break
@@ -429,10 +436,10 @@ def add_book(index):
             book[keys[3]] = float(book[keys[1]]) - book[keys[2]]
             break
     comics.append(book)
-    new_spreadsheet(title)
-    update_headers(title)
-    update_price(title, price)
-    restock_book(title, index)
+    # new_spreadsheet(title)
+    # update_headers(title)
+    # update_price(title, price)
+    restock_book(title, index, price)
 
 
 def validate_input(user_input, not_zero, number_type):
