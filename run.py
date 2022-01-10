@@ -562,7 +562,7 @@ def delete_data():
             print("Deleting data...")
             titles = get_book_info("title")
             for title in titles:
-                print(f"deleteing {title}")
+                print(f"Deleting {title}")
                 SHEET.del_worksheet(SHEET.worksheet(title))
             SHEET.worksheet("price").clear()
             SHEET.worksheet("stock").clear()
