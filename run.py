@@ -309,9 +309,10 @@ def update_sales(source):
                     else:
                         while True:
                             reorder = input(
-                                f"Stock levels for {books[ind]} are {current_stock[ind - 2]}."
-                                f" Sales of {choice} is more than the current stock"
-                                " levels.\n Would you like to reorder "
+                                f"Stock levels for {books[ind]} is "
+                                f"{current_stock[ind - 2]}."
+                                f" Sales of {choice} is more than the current"
+                                " stock levels.\n Would you like to reorder "
                                 "stock y/n\n"
                             )
                             if reorder == "y":
@@ -553,8 +554,8 @@ def update_stock_comic_list():
     Updates live stock in comic list
     """
     stock_levels = SHEET.worksheet("stock").get_all_values()[1]
-    for ind in range(0, len(comics)):
-        comics[ind]["stock"] = stock_levels[ind]
+    for counter, value in enumerate(comics):
+        value["stock"] = stock_levels[counter]
 
 
 def populate_comic_list():
