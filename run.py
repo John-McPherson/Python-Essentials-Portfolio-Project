@@ -551,9 +551,11 @@ def populate_comic_list():
     Creates a dictionary with sales data for each book.
     """
     print("Loading application data...")
-    keys = ["title", "sale price", "cpu", "profit per sale"]
+    keys = ["title", "sale price", "cpu", "profit per sale", "stock"]
     book = {}
     titles = data[0]
+    stock_levels = SHEET.worksheet("stock")
+    stock_levels = SHEET.worksheet("stock").get_all_values()[1]
     counter = 0
     for ind in range(2, len(titles)):
         price = SHEET.worksheet("price")
@@ -561,6 +563,7 @@ def populate_comic_list():
         book[keys[1]] = float(price.get_all_values()[counter][1])
         book[keys[2]] = recalculate_cpu(titles[ind])
         book[keys[3]] = book[keys[1]] - book[keys[2]]
+        book[keys[4]] = stock_levels[counter]
         counter += 1
         comics.append(book.copy())
     print("Application data loaded.")
