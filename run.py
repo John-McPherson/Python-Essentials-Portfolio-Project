@@ -545,6 +545,15 @@ def update_price(title, price):
     pricework.update(price_cell, price)
 
 
+def update_stock_comic_list():
+    """
+    Updates live stock in comic list
+    """
+    stock_levels = SHEET.worksheet("stock").get_all_values()[1]
+    for ind in range(0, len(comics)):
+        comics[ind]["stock"] = stock_levels[ind]
+
+
 def populate_comic_list():
     """
     Creates a dictionary with sales data for each book.
@@ -553,7 +562,6 @@ def populate_comic_list():
     keys = ["title", "sale price", "cpu", "profit per sale", "stock"]
     book = {}
     titles = data[0]
-    stock_levels = SHEET.worksheet("stock")
     stock_levels = SHEET.worksheet("stock").get_all_values()[1]
     counter = 0
     for ind in range(2, len(titles)):
