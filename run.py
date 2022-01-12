@@ -309,8 +309,10 @@ def update_sales(source):
                     else:
                         while True:
                             reorder = input(
-                                f"sales numbers for {books[ind]} higher than "
-                                "stock levels. Would you like to reorder "
+                                f"Stock levels for {books[ind]} are "
+                                f"{current_stock[ind - 2]}.\n Sales  "
+                                f"of {choice} is more than the current stock"
+                                " levels. Would you like to reorder "
                                 "stock y/n\n"
                             )
                             if reorder == "y":
@@ -319,7 +321,7 @@ def update_sales(source):
                             elif reorder == "n":
                                 print(
                                     "Please enter a sales number lower than "
-                                    "the current stock levels."
+                                    f"the {current_stock[ind - 2]}."
                                 )
                                 break
                             else:
