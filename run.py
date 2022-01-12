@@ -89,7 +89,7 @@ def select_book():
                 else:
                     print(
                         "Unforunatly the comics stock tracker cannot support"
-                        "more than 6 books\n"
+                        " more than 6 books\n"
                     )
                     break
         print(
@@ -491,7 +491,7 @@ def new_spreadsheet(title):
     Creates a new worksheet to track stock levels.
     """
     SHEET.add_worksheet(title=title, rows="100", cols="20")
-    update_sheet(["restock", "cost", "date", "cost per unit"], title)
+    update_sheet(["restock", "cost", "date", "cost per unit"], "new")
 
 
 def update_headers(title):
