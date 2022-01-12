@@ -276,6 +276,7 @@ def update_sales(source):
     books = sales_sheet[0]
     profit_per_sale = get_book_info("profit per sale")
     sale_price = get_book_info("sale price")
+    # current_stock = get_book_info("stock")
     while True:
         output = [source]
         gross_profit = []
@@ -294,16 +295,38 @@ def update_sales(source):
             while True:
                 choice = input(f"Enter sale numbers for {books[ind]}\n")
                 if validate_input(choice, False, "int"):
-                    gross_profit.append(
-                        int(choice) * float(sale_price[counter])
-                    )
-                    net_profit.append(
-                        int(choice) * float(profit_per_sale[counter])
-                    )
-                    output.append(choice)
-                    summary += f"{choice} copies of {books[ind]}\n"
-                    counter += 1
-                    break
+                    if int(choice) < 100:
+                        gross_profit.append(
+                            int(choice) * float(sale_price[counter])
+                        )
+                        net_profit.append(
+                            int(choice) * float(profit_per_sale[counter])
+                        )
+                        output.append(choice)
+                        summary += f"{choice} copies of {books[ind]}\n"
+                        counter += 1
+                        break
+                    else:
+                        while True:
+                            reorder = input(
+                                f"sales numbers for {books[ind]} higher than "
+                                "stock levels. Would you like to reorder "
+                                "stock y/n\n"
+                            )
+                            if reorder == "y":
+                                print("test")
+                                break
+                            elif reorder == "n":
+                                print(
+                                    "Please enter a sales number lower than "
+                                    "the current stock levels."
+                                )
+                                break
+                            else:
+                                print(
+                                    "You have made an incorrect selection. "
+                                    "Please try again"
+                                )
         if confirm_choice(
             f"You are updating sales for {date} \n"
             "Sales as follows;\n" + summary
