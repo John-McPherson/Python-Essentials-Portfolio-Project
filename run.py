@@ -166,6 +166,7 @@ def update_stock_levels(stock_data):
     for cell_number in new_stock_level:
         stock.update(chr(col) + "2", cell_number)
         col += 1
+    update_stock_comic_list()
     print("Total stock levels updated...")
 
 
@@ -197,6 +198,7 @@ def update_stock_restock(stock_data, index):
     if current_stock is None:
         current_stock = 0
     stock.update(col, int(stock_data) + int(current_stock))
+    update_stock_comic_list()
     print("Total stock levels updated.")
 
 
