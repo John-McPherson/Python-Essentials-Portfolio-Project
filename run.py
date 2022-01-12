@@ -129,9 +129,7 @@ def restock_book(book, index, price):
             f"For £{stock[1]} which works out at cpu £{stock[3]}\n"
         ):
             break
-    try:
-        print(SHEET.worksheet(book))
-    except NameError:
+    if price > 0:
         new_spreadsheet(book)
         update_headers(book)
         update_price(book, price)
@@ -309,9 +307,8 @@ def update_sales(source):
                     else:
                         while True:
                             reorder = input(
-                                f"Stock levels for {books[ind]} are 
-                                {current_stock[ind - 2]}.\n Sales  "
-                                f"of {choice} is more than the current stock"
+                                f"Stock levels for {books[ind]} are {current_stock[ind - 2]}.\n"
+                                f" Sales of {choice} is more than the current stock"
                                 " levels. Would you like to reorder "
                                 "stock y/n\n"
                             )
