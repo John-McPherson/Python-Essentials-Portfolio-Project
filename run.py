@@ -309,13 +309,14 @@ def update_sales(source):
                     else:
                         while True:
                             reorder = input(
-                                f"Stock levels for {books[ind]} are {current_stock[ind - 2]}.\n"
+                                f"Stock levels for {books[ind]} are {current_stock[ind - 2]}."
                                 f" Sales of {choice} is more than the current stock"
-                                " levels. Would you like to reorder "
+                                " levels.\n Would you like to reorder "
                                 "stock y/n\n"
                             )
                             if reorder == "y":
                                 restock_book(books[ind], int(ind - 2), 0)
+                                current_stock = get_book_info("stock")
                                 break
                             elif reorder == "n":
                                 print(
