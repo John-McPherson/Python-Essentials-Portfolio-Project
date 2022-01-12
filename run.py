@@ -616,7 +616,6 @@ def add_headers_setup(headings, worksheet):
     Readds the headers to the con and sales sheets after deletion.
     Called as part of the delete_data function.
     """
-    # sales_headings = ["source", "date"]
     sheet = SHEET.worksheet(worksheet)
     col = 65
     counter = 0
