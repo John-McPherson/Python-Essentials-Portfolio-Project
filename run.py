@@ -53,7 +53,7 @@ def confirm_choice(choice):
     Prompts the user to confirm their choice.
     """
     while True:
-        confirm = input(f"{choice}Is that correct? y/n\n")
+        confirm = input(f"{choice}Is that correct? y/n\n").lower()
         if confirm == "y":
             return True
         elif confirm == "n":
@@ -177,7 +177,7 @@ def order_prompt(book, index):
     while True:
         choice = input(
             f"Stock level of {book} is low.\n Would you like to restock? y/n\n"
-        )
+        ).lower()
         if choice == "y":
             restock_book(book, index, 0)
             break
@@ -218,7 +218,7 @@ def run_again():
     Gives the user the option to rerun the program after it finishes
     """
     while True:
-        choice = input("Do you want to update another input? y/n \n")
+        choice = input("Do you want to update another input? y/n \n").lower()
         if choice == "y":
             set_up()
         elif choice == "n":
@@ -254,7 +254,9 @@ def select_con_or_online():
     are chosen then it prompts for the name of the convention.
     """
     while True:
-        source = input("Are you updating online or convention sales?\n")
+        source = input(
+            "Are you updating online or convention sales?\n"
+        ).lower()
         if source == "online":
             if confirm_choice(f"You are updating {source} sales. "):
                 update_sales(source)
@@ -314,7 +316,7 @@ def update_sales(source):
                                 f" Sales of {choice} is more than the "
                                 "current stock levels.\nWould you like "
                                 "to reorder stock y/n\n"
-                            )
+                            ).lower()
                             if reorder == "y":
                                 restock_book(books[ind], int(ind - 2), 0)
                                 current_stock = get_book_info("stock")
@@ -429,7 +431,9 @@ def validate_book_title(comic_title):
             book_exists = True
     if book_exists is True:
         while True:
-            choice = input("Do you want to add a different title? y/n\n")
+            choice = input(
+                "Do you want to add a different title? y/n\n"
+            ).lower()
             if choice == "y":
                 return False
             elif choice == "n":
