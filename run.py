@@ -308,32 +308,13 @@ def update_sales(source):
                         break
                     else:
                         while True:
-                          
-        if confirm_choice(
-            f"You are updating sales for {date} \n"
-            "Sales as follows;\n" + summary
-        ):
-            update_sheet(output, "sales")
-            update_stock_levels(output[2:None])
-            if source != "online":
-                update_con_costs(source, date, gross_profit, net_profit)
-            else:
-                print(
-                    "Online Sales Report:\n"
-                    f"Gross profit is £{total_profit(gross_profit)}\n"
-                    f"Net profit is £{total_profit(net_profit)}\n"
-                )
-            break
-def validate_stock_levels():
-    """
-    """
-      reorder = input(
-          f"Stock levels for {books[ind]} is "
-          f"{current_stock[ind - 2]}."
-          f" Sales of {choice} is more than the current"
-          " stock levels.\n Would you like to reorder "
-          "stock y/n\n"
-          )
+                            reorder = input(
+                                f"Stock levels for {books[ind]} are "
+                                f"{current_stock[ind - 2]}."
+                                f" Sales of {choice} is more than the "
+                                "current stock levels.\nWould you like "
+                                "to reorder stock y/n\n"
+                            )
                             if reorder == "y":
                                 restock_book(books[ind], int(ind - 2), 0)
                                 current_stock = get_book_info("stock")
@@ -349,6 +330,22 @@ def validate_stock_levels():
                                     "You have made an incorrect selection. "
                                     "Please try again"
                                 )
+        if confirm_choice(
+            f"You are updating sales for {date} \n"
+            "Sales as follows;\n" + summary
+        ):
+            update_sheet(output, "sales")
+            update_stock_levels(output[2:None])
+            if source != "online":
+                update_con_costs(source, date, gross_profit, net_profit)
+            else:
+                print(
+                    "Online Sales Report:\n"
+                    f"Gross profit is £{total_profit(gross_profit)}\n"
+                    f"Net profit is £{total_profit(net_profit)}\n"
+                )
+            break
+
 
 def total_profit(profit_array):
     """
