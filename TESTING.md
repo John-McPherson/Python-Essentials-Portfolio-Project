@@ -215,7 +215,9 @@ While fixing the delete function issues I discovered a new validation issue with
 
 17. The error handling in the update_stock function was not working correctly. This was fixed in commit [4322610](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/4322610bf708dea51a12d9cd24ab25fd6b734ed8).
 
-18. On first load the populate comic list would cause the application to crash as it was trying to get infomation on stock levels that had not been added yet. This was fixed in commit [cbf8a06](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/cbf8a068aa6d05e3d4bee835d114425f611a7920)
+18. On first load the populate comic list would cause the application to crash as it was trying to get infomation on stock levels that had not been added yet. This was fixed in commit [cbf8a06](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/cbf8a068aa6d05e3d4bee835d114425f611a7920).
+
+19. Application would crash when adding new book due to incorrect title info being passed to it. This was fixed in commit [daf1dc0](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/daf1dc022dc479aec3455c8cbd16da3059be95cd).
 
 ## **Known Bugs**
 
