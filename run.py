@@ -297,7 +297,7 @@ def update_sales(source):
             while True:
                 choice = input(f"Enter sale numbers for {books[ind]}\n")
                 if validate_input(choice, False, "int"):
-                    if int(choice) < int(current_stock[ind - 2]):
+                    if int(choice) <= int(current_stock[ind - 2]):
                         gross_profit.append(
                             int(choice) * float(sale_price[counter])
                         )
