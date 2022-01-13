@@ -129,11 +129,11 @@ def restock_book(book, index, price):
             f"For £{stock[1]} which works out at cpu £{stock[3]}\n"
         ):
             break
+    price = float(price)
     if price > 0:
         new_spreadsheet(book)
         update_headers(book)
         update_price(book, price)
-
     update_sheet(stock, book)
     update_cpu_on_restock(index, book)
     update_stock_restock(restock, index)
@@ -570,7 +570,10 @@ def populate_comic_list():
     keys = ["title", "sale price", "cpu", "profit per sale", "stock"]
     book = {}
     titles = data[0]
-    stock_levels = SHEET.worksheet("stock").get_all_values()[1]
+    try:
+        stock_levels = SHEET.worksheet("stock").get_all_values()[-1]
+    except IndexError:
+        print("No Books added\n")
     counter = 0
     for ind in range(2, len(titles)):
         price = SHEET.worksheet("price")
