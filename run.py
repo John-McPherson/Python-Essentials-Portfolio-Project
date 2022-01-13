@@ -308,28 +308,7 @@ def update_sales(source):
                         break
                     else:
                         while True:
-                            reorder = input(
-                                f"Stock levels for {books[ind]} is "
-                                f"{current_stock[ind - 2]}."
-                                f" Sales of {choice} is more than the current"
-                                " stock levels.\n Would you like to reorder "
-                                "stock y/n\n"
-                            )
-                            if reorder == "y":
-                                restock_book(books[ind], int(ind - 2), 0)
-                                current_stock = get_book_info("stock")
-                                break
-                            elif reorder == "n":
-                                print(
-                                    "Please enter a sales number lower than "
-                                    f"the {current_stock[ind - 2]}."
-                                )
-                                break
-                            else:
-                                print(
-                                    "You have made an incorrect selection. "
-                                    "Please try again"
-                                )
+                          
         if confirm_choice(
             f"You are updating sales for {date} \n"
             "Sales as follows;\n" + summary
@@ -345,7 +324,31 @@ def update_sales(source):
                     f"Net profit is £{total_profit(net_profit)}\n"
                 )
             break
-
+def validate_stock_levels():
+    """
+    """
+      reorder = input(
+          f"Stock levels for {books[ind]} is "
+          f"{current_stock[ind - 2]}."
+          f" Sales of {choice} is more than the current"
+          " stock levels.\n Would you like to reorder "
+          "stock y/n\n"
+          )
+                            if reorder == "y":
+                                restock_book(books[ind], int(ind - 2), 0)
+                                current_stock = get_book_info("stock")
+                                break
+                            elif reorder == "n":
+                                print(
+                                    "Please enter a sales number lower than "
+                                    f"the {current_stock[ind - 2]}."
+                                )
+                                break
+                            else:
+                                print(
+                                    "You have made an incorrect selection. "
+                                    "Please try again"
+                                )
 
 def total_profit(profit_array):
     """

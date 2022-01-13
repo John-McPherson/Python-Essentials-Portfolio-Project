@@ -13,6 +13,7 @@ It will then ask you to confirm your choice three times. Then it will clear the 
 * [Functionality Testing](#functionality-testing)
     * [User Story Evaluation](#user-story-valuation)
 * [Bug Fixes](#bug-fixes)
+* [Known Bugs](#known-bugs)
 
 ## **Validation**
 I ran my code through the [pep8online linter](http://pep8online.com/) to check for errors. The original code came back with the following errors;
@@ -213,3 +214,10 @@ While fixing the delete function issues I discovered a new validation issue with
 16. If stock ever got to negative numbers this would cause a fatal error and cause the application to crash when calculating a restock. This was fixed by preventing the user from entering sales higher than current stock levels would allow. Now whenever a user tries to enter sales numbers higher than stock levels it prompts the user to either order more stock or renter a lower sales number. This was fixed in commits [1c39ffe](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/1c39ffe7514945f58357ed788bfb2b3f7229c7c9), [edcb4a0](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/edcb4a0a7c31f19dcafd632b35b2f7cfbd13dcb6), [f808266](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/f8082665438af61db66960da729ed0b42f45359d), [1f34750](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/1f34750a45f7e48d1aef1c2c2822844a3041e784), [f8aacc8](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/f8aacc8528579a10bf3337a91f6ed0864a6a7f8b), [12678c8](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/12678c8f37de5845be09713d251862285638dc3b), [99a558e](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/99a558e574fb5ddb3fc15856776591184a63397b).
 
 17. The error handling in the update_stock function was not working correctly. This was fixed in commit [4322610](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/4322610bf708dea51a12d9cd24ab25fd6b734ed8).
+
+## **Known Bugs**
+
+1. When updating stock levels due to the way numbers are rounded when generating the CPU (cost per unit) per book if the stock ordered is more than 100 times higher than the cost of the restock it will generate a CPU of £0.0. As no real world data would have a such a low cost compared to the stock ordered the impact of this bug is considered low. 
+
+![Known Bug](./assets/imgs/known-bug.png)
+
