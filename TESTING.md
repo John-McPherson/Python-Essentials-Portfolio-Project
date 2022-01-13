@@ -215,6 +215,8 @@ While fixing the delete function issues I discovered a new validation issue with
 
 17. The error handling in the update_stock function was not working correctly. This was fixed in commit [4322610](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/4322610bf708dea51a12d9cd24ab25fd6b734ed8).
 
+18. On first load the populate comic list would cause the application to crash as it was trying to get infomation on stock levels that had not been added yet. This was fixed in commit [cbf8a06](https://github.com/John-McPherson/Python-Essentials-Portfolio-Project/commit/cbf8a068aa6d05e3d4bee835d114425f611a7920)
+
 ## **Known Bugs**
 
 1. When updating stock levels due to the way numbers are rounded when generating the CPU (cost per unit) per book if the stock ordered is more than 100 times higher than the cost of the restock it will generate a CPU of £0.0. As no real world data would have a such a low cost compared to the stock ordered the impact of this bug is considered low. 
